@@ -1,0 +1,116 @@
+{
+  "activos": [
+    {
+      "id": "1",
+      "CodTransaccion": "CT001",
+      "NroFormulario": 100,
+      "marcaId": "1",
+      "categoriaId": "1",
+      "tipoId": "1",
+      "valorUnitario": 500,
+      "provedorId": "1",
+      "nroSerial": "SN001",
+      "empresaResponsableId": "1",
+      "estadoId": "1"
+    },
+    {
+      "titulo": "Nueva tarea",
+      "fechaDeInicio": "lo que sea",
+      "fechaDeFin": "2024-03-10",
+      "descripcion": "Descripción de la nueva tarea",
+      "id": "4sTzdmw"
+    }
+  ],
+  "historialActivos": [
+    {
+      "id": "1",
+      "activoId": "1",
+      "fecha": "2024-03-05",
+      "responsableId": "1",
+      "estadoId": "2"
+    }
+  ],
+  "detalleMovimiento": [
+    {
+      "id": "1",
+      "fecha": "2024-03-05",
+      "activoId": "1",
+      "comentario": "Asignado a Juan Perez",
+      "asignacionId": "1"
+    }
+  ],
+  "proveedores": [
+    {
+      "id": "1",
+      "nombre": "Proveedor A",
+      "email": "proveedora@example.com"
+    }
+  ],
+  "marcas": [
+    {
+      "id": "1",
+      "nombre": "Marca X"
+    }
+  ],
+  "estados": [
+    {
+      "id": "1",
+      "nombre": "En stock"
+    },
+    {
+      "id": "2",
+      "nombre": "En uso"
+    }
+  ],
+  "asignaciones": [
+    {
+      "id": "1",
+      "fecha": "2002-07-25",
+      "responsableId": "1"
+    }
+  ],
+  "personas": [
+    {
+      "id": "1",
+      "nombre": "Juan Perez",
+      "email": "juanperez@example.com",
+      "tipoPersonaId": "1"
+    }
+  ],
+  "categoriaActivos": [
+    {
+      "id": "1",
+      "nombre": "Computadoras"
+    }
+  ],
+  "tipoPersonas": [
+    {
+      "id": "1",
+      "nombre": "Empleado"
+    }
+  ],
+  "tipoMovActivos": [
+    {
+      "id": "1",
+      "nombre": "Compra"
+    },
+    {
+      "id": "2",
+      "nombre": "Asignación"
+    }
+  ],
+  "telefonoPersonas": [
+    {
+      "id": "1",
+      "nro": "123456789",
+      "ubicacion": "Oficina",
+      "personaId": "1"
+    }
+  ],
+  "tipoActivos": [
+    {
+      "id": "1",
+      "nombre": "Portátil"
+    }
+  ]
+}
