@@ -33,7 +33,7 @@ function agregar(info, endPoint) {
         });
 }
 
-agregar(nuevosDatos, url);
+
 
 
 export {

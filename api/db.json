@@ -14,11 +14,8 @@
       "estadoId": "1"
     },
     {
-      "titulo": "Nueva tarea",
-      "fechaDeInicio": "lo que sea",
-      "fechaDeFin": "2024-03-10",
-      "descripcion": "Descripción de la nueva tarea",
-      "id": "4sTzdmw"
+      "nombre": "cs",
+      "id": "and"
     }
   ],
   "historialActivos": [
@@ -26,7 +23,7 @@
       "id": "1",
       "activoId": "1",
       "fecha": "2024-03-05",
-      "responsableId": "1",
+      "personaId": "1",
       "estadoId": "2"
     }
   ],

@@ -1,4 +1,4 @@
-import {agregar as agregar} from '..../api/api.js'
+import { agregar as agregar } from '/api/api.js'
 
 class FormComponent extends HTMLElement {
     constructor() {
@@ -14,7 +14,7 @@ class FormComponent extends HTMLElement {
         this.info = this.getAttribute("info");
 
         this.innerHTML = `
-           
+        
         <div class="container">
             <form class="form" action="">
                 <h2 class="formatoH2">Form</h2>
@@ -50,7 +50,7 @@ class FormComponent extends HTMLElement {
         console.log(data);
         let url = 'http://localhost:3000/activos'
         agregar(data, url);
-        
+
 
 
     }
@@ -58,3 +58,4 @@ class FormComponent extends HTMLElement {
 
 customElements.define("form-r", FormComponent);
 
+console.log("hola")
