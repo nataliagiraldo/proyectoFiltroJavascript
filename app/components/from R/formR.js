@@ -48,7 +48,7 @@ class FormComponent extends HTMLElement {
             "id": id
         };
         console.log(data);
-        let url = 'http://localhost:3000/activos'
+        let url = `http://localhost:3000/${this.info}`;
         agregar(data, url);
 
 
