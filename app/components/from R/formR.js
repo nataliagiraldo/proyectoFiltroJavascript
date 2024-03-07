@@ -22,10 +22,7 @@ class FormComponent extends HTMLElement {
                     <input required="" autocomplete="off" type="text" name="nombre" id="nombre${this.info}" />
                     <label for="username">Nombre</label>
                 </div>
-                <div class="input-field">
-                    <input required="" autocomplete="off" type="text" name="id" id="id${this.info}" />
-                    <label for="username">Id</label>
-                </div>
+                
                 <div class="btn-container">
                     <input class="btn" type="submit" value="Agregar" id="enviar${this.info}">
                 </div>
@@ -42,10 +39,10 @@ class FormComponent extends HTMLElement {
 
     getData() {
         const nombre = document.getElementById(`nombre${this.info}`).value;
-        const id = document.getElementById(`id${this.info}`).value;
+        
         let data = {
             "nombre": nombre,
-            "id": id
+            
         };
         console.log(data);
         let url = `http://localhost:3000/${this.info}`;

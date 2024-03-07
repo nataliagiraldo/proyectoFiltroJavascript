@@ -1,12 +1,8 @@
 const url = 'http://localhost:3000/activos';
+const id  = "1";
 
 // Datos que deseas agregar al servidor JSON
-let nuevosDatos = {
-    titulo: "Nueva tarea",
-    fechaDeInicio: "lo que sea",
-    fechaDeFin: "2024-03-10",
-    descripcion: "Descripción de la nueva tarea"
-};
+
 
 function agregar(info, endPoint) {
     let opciones = {
@@ -33,9 +29,48 @@ function agregar(info, endPoint) {
         });
 }
 
+const myHeaders = new Headers({
+    "Content-Type": "application/json"
+});
 
+const getInfo = async (endPoint, targetId) => {
+    try {
+        const respuesta = await fetch(`${endPoint}`);
+        // Si la respuesta es correcta
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+
+            // Buscar el objeto con el ID específico
+            const objetoBuscado = datos.find(item => item.id === targetId);
+
+            if (objetoBuscado) {
+                // Si se encuentra el objeto, hacer algo con él
+                console.log('Objeto encontrado:', objetoBuscado);
+            } else {
+                // Si no se encuentra el objeto
+                console.log('El producto con el ID especificado no existe');
+            }
+        } else if (respuesta.status === 401) {
+            console.log('La url no es correcta');
+        } else if (respuesta.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al Administrador');
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const getInfoAsync = async (endPoint, targetId) => {
+    await getInfo(endPoint, targetId);
+}
+
+
+getInfoAsync(url,id)
 
 
 export {
+    getInfoAsync as getInfoAsync,
     agregar as agregar
 }
