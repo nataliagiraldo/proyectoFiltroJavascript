@@ -1,5 +1,5 @@
 const url = 'http://localhost:3000/activos';
-const id  = "1";
+const id = "1";
 
 // Datos que deseas agregar al servidor JSON
 
@@ -67,10 +67,40 @@ const getInfoAsync = async (endPoint, targetId) => {
 }
 
 
-getInfoAsync(url,id)
+const getInfoAll = async (endPoint) => {
+    try {
+        const respuesta = await fetch(endPoint);
+
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+            // viewDataHtml(datos);
+            console.log(datos);
+            return datos;
+        } else if (respuesta.status === 401) {
+            console.log('La URL no es correcta');
+        } else if (respuesta.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al administrador');
+        }
+    } catch (error) {
+        console.log('Error en la petición:', error);
+    }
+}
+
+
+const runAsync = async (endPoint) => {
+    return await getInfoAll(endPoint);
+    
+    
+}
+
+
+
 
 
 export {
     getInfoAsync as getInfoAsync,
-    agregar as agregar
+    agregar as agregar,
+    runAsync
 }

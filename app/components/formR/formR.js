@@ -32,6 +32,7 @@ class FormComponent extends HTMLElement {
 
         const form = this.querySelector('form');
         form.addEventListener('submit', (event) => {
+            //! no previene recarga
             event.preventDefault();
             this.getData();
         });
@@ -39,10 +40,10 @@ class FormComponent extends HTMLElement {
 
     getData() {
         const nombre = document.getElementById(`nombre${this.info}`).value;
-        
+
         let data = {
             "nombre": nombre,
-            
+
         };
         console.log(data);
         let url = `http://localhost:3000/${this.info}`;
@@ -54,5 +55,3 @@ class FormComponent extends HTMLElement {
 }
 
 customElements.define("form-r", FormComponent);
-
-console.log("hola")

@@ -1,14 +1,64 @@
 class sideBar extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  mostrar(strIn) {
+    //pre: asume que strIn es un string de forma "parte1-parte2"
+    //donde parte1 se refiere a la entidad y parte2 a pantalla de la accion correspondiente
+    //activos-crear
+    //ajustes
+    let partes = strIn.split("-")
+    console.log("adentro: " + partes)
+    if (partes.length > 1) {
+      switch (partes[0]) {
+        case "activos": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<form-r info="activos"></form-r >'
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<agregar-info info="activos"></agregar-info >'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = ''
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = ''
+              break;
+          }
+        }
+          break;
+        case "persona": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = ''
+              break;
+            case "editar":
+              this.contenedor.innerHTML = ''
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = ''
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = ''
+              break;
+          }
+        }
+          break;
+        //agregar "cases" para las otras entidades :)
+      }
     }
 
-    connectedCallback() {
-        this.render();
-    }
+  }
 
-    render() {
-        this.innerHTML = `
+  async render() {
+    this.innerHTML = `
+      <link rel="stylesheet" href="formR.css" type="module">
       <style>
       body {
         font-family: "Lato", sans-serif;
@@ -94,81 +144,99 @@ class sideBar extends HTMLElement {
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" onclick="mostrar(this.getAttribute("mostrar"))" class="btnMostrar" mostrar="activos-agregar">Agregar</a>
+          <a href="#"  class="btnMostrar" mostrar="activos-editar">Editar</a>
+          <a href="#"  class="btnMostrar" mostrar="activos-eliminar">Eliminar</a>
+          <a href="#"  class="btnMostrar" mostrar="activos-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Marcas 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#"  class="btnMostrar" mostrar="Marcas-agregar">Agregar</a>
+          <a href="#"  class="btnMostrar" mostrar="Marcas-editar">Editar</a>
+          <a href="#"  class="btnMostrar" mostrar="Marcas-eliminar">Eliminar</a>
+          <a href="#"  class="btnMostrar" mostrar="Marcas-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Persona 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" class="btnMostrar" >Agregar</a>
+          <a href="#" class="btnMostrar" >Editar</a>
+          <a href="#" class="btnMostrar" >Eliminar</a>
+          <a href="#" class="btnMostrar" >Buscar</a>
         </div>
         <button class="dropdown-btn">Estado 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" class="btnMostrar" >Agregar</a>
+          <a href="#" class="btnMostrar" >Editar</a>
+          <a href="#" class="btnMostrar" >Eliminar</a>
+          <a href="#" class="btnMostrar" >Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo persona 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" class="btnMostrar" >Agregar</a>
+          <a href="#" class="btnMostrar" >Editar</a>
+          <a href="#" class="btnMostrar" >Eliminar</a>
+          <a href="#" class="btnMostrar" >Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo MovimentoAct 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" class="btnMostrar" >Agregar</a>
+          <a href="#" class="btnMostrar" >Editar</a>
+          <a href="#" class="btnMostrar" >Eliminar</a>
+          <a href="#" class="btnMostrar" >Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo activo 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#">Agregar</a>
-          <a href="#">Editar</a>
-          <a href="#">Eliminar</a>
-          <a href="#">Buscar</a>
+          <a href="#" class="btnMostrar" >Agregar</a>
+          <a href="#" class="btnMostrar" >Editar</a>
+          <a href="#" class="btnMostrar" >Eliminar</a>
+          <a href="#" class="btnMostrar" >Buscar</a>
         </div>
        
       </div>
       
       <div id="main">
-        <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+        <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>
+        <div id="contenedor">
+
         <h2>Collapsed Sidebar</h2>
         <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
+        </div> 
       </div>
       
       
       `;
-        const myScript = document.createElement('script');
-        myScript.src = 'sideApp.js';
-        document.head.appendChild(myScript);
-    }
+    const myScript = document.createElement('script');
+    myScript.src = '/app/components/sideBar/sideApp.js';
+    myScript.defer = true
+    document.head.appendChild(myScript);
+    let contenedor = await document.getElementById("contenedor")
+    this.contenedor = contenedor
 
+    let botones = await document.getElementsByClassName("btnMostrar")
+    console.log("tipo" + botones)
+    if (botones) {
+      Array.from(botones).forEach(element => {
+        element.addEventListener("click", (e) => {
+          e.preventDefault()
+          this.mostrar(element.getAttribute("mostrar"))
+        })
+      });
+    }
+    else console.log("no hay botones");
+
+  }
 }
 
 

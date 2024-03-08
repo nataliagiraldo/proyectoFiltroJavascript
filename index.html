@@ -5,15 +5,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<script src="app/components/sideBar/side.js"></script>
+	<script src="app/components/sideBar/side.js" type="module"></script>
 	<script src="app/components/sideBar/sideApp.js"></script>
-
+	<script src="app/components/formR/formR.js" type="module"></script>
+	<script src="app/components/infoConseguir/info.js" type="module"></script>
+	<script src="api/api.js" type="module" async></script>
+	<link rel="stylesheet" href="formR.css" type="module">
+	<!-- todos los custom components que vayan a usar otros customcomponents adentro deben ser importados
+	con type="module" para permitir que se referencien otros archivos js -->
+	<!--
+		hay que agregar el script para cada uno de los archivos que contengan un customElement que se quiera usar en side.js	
+	-->
 </head>
 
 <body>
 	<side-bar></side-bar>
-	
-
 </body>
 
 </html>

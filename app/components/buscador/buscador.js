@@ -23,7 +23,6 @@ class buscador extends HTMLElement {
             event.preventDefault(); 
         
             let searchValue = document.getElementById('searchInput').value;
-            console.log('Búsqueda realizada:', searchValue);
             let url = `http://localhost:3000/${this.info}`;
             getInfoAsync(url, searchValue);
         });

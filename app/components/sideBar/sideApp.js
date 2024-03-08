@@ -1,4 +1,5 @@
 function openNav() {
+  console.log("holz")
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
@@ -21,5 +22,6 @@ function openNav() {
         dropdownContent.style.display = "block";
       }
     });
+    dropdown[i].nextElementSibling.style.display = "none";
   }
   
