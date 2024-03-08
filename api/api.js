@@ -1,5 +1,7 @@
 const url = 'http://localhost:3000/activos';
-const id = "1";
+const id = "IZNXI1L";
+const newId = "natalia"
+const paramName = "nombre"
 
 // Datos que deseas agregar al servidor JSON
 
@@ -46,6 +48,7 @@ const getInfo = async (endPoint, targetId) => {
             if (objetoBuscado) {
                 // Si se encuentra el objeto, hacer algo con él
                 console.log('Objeto encontrado:', objetoBuscado);
+                return objetoBuscado
             } else {
                 // Si no se encuentra el objeto
                 console.log('El producto con el ID especificado no existe');
@@ -63,8 +66,12 @@ const getInfo = async (endPoint, targetId) => {
 }
 
 const getInfoAsync = async (endPoint, targetId) => {
-    await getInfo(endPoint, targetId);
+
+    const objetoBuscado = await getInfo(endPoint, targetId);
+    return objetoBuscado;
 }
+
+
 
 
 const getInfoAll = async (endPoint) => {
@@ -91,9 +98,78 @@ const getInfoAll = async (endPoint) => {
 
 const runAsync = async (endPoint) => {
     return await getInfoAll(endPoint);
-    
-    
+
+
 }
+
+
+const editInfo = async (endPoint, targetId, paramName, paramValue) => {
+    try {
+        // Obtener la información actual
+        const respuesta = await fetch(`${endPoint}`);
+
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+
+            // Buscar el objeto con el ID específico
+            const objetoBuscadoIndex = datos.findIndex(item => item.id === targetId);
+
+            if (objetoBuscadoIndex !== -1) {
+                // Si se encuentra el objeto, actualizar el parámetro específico
+                datos[objetoBuscadoIndex][paramName] = paramValue;
+
+                // Realizar la solicitud de actualización
+                const updateResponse = await fetch(`${endPoint}/${targetId}`, {
+                    method: 'PUT',
+                    headers: myHeaders,
+                    body: JSON.stringify(datos[objetoBuscadoIndex])
+                });
+
+                if (updateResponse.status === 200) {
+                    console.log('Objeto actualizado con éxito:', datos[objetoBuscadoIndex]);
+                    return datos[objetoBuscadoIndex];
+                } else {
+                    console.log('Error al intentar actualizar el objeto. Consulte al Administrador');
+                }
+            } else {
+                // Si no se encuentra el objeto
+                console.log('El producto con el ID especificado no existe');
+            }
+        } else if (respuesta.status === 401) {
+            console.log('La url no es correcta');
+        } else if (respuesta.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al Administrador');
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const editInfoAsync = async (endPoint, targetId, paramName, paramValue) => {
+    const objetoActualizado = await editInfo(endPoint, targetId, paramName, paramValue);
+    return objetoActualizado;
+}
+
+// editInfoAsync(url, id, paramName, newId)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,5 +178,6 @@ const runAsync = async (endPoint) => {
 export {
     getInfoAsync as getInfoAsync,
     agregar as agregar,
-    runAsync
+    runAsync,
+    editInfoAsync
 }

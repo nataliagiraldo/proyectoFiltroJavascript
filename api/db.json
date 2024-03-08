@@ -46,8 +46,69 @@
       "id": "qtTdlEp"
     },
     {
-      "nombre": "lucas",
-      "id": "IZNXI1L"
+      "nombre": "natalia",
+      "id": "IZNXI1L",
+      "name": "natalia"
+    },
+    {
+      "nombre": "123",
+      "id": "wZRCFOr"
+    },
+    {
+      "nombre": "hola",
+      "id": "hola"
+    },
+    {
+      "nombre": "mich",
+      "id": "ScrrI6J"
+    },
+    {
+      "nombre": "si",
+      "id": "Dtbj7A5"
+    },
+    {
+      "nombre": "hhy",
+      "id": "kFNDj6L"
+    },
+    {
+      "nombre": "hola",
+      "id": "t4pl4YQ"
+    },
+    {
+      "nombre": "rrr",
+      "id": "i1ud-rw"
+    },
+    {
+      "nombre": "h9",
+      "id": "ExWroP7"
+    },
+    {
+      "nombre": "pani",
+      "id": "ecXsTJt"
+    },
+    {
+      "nombre": "pani",
+      "id": "GIjuc5e"
+    },
+    {
+      "nombre": "pani",
+      "id": "h5RVEPq"
+    },
+    {
+      "nombre": "pani",
+      "id": "UkhIVDf"
+    },
+    {
+      "nombre": "pani",
+      "id": "RKrdvRf"
+    },
+    {
+      "nombre": "pani",
+      "id": "LKgbkya"
+    },
+    {
+      "nombre": "frank",
+      "id": "ULUuHw0"
     }
   ],
   "historialActivos": [
@@ -104,6 +165,12 @@
       "nombre": "Juan Perez",
       "email": "juanperez@example.com",
       "tipoPersonaId": "1"
+    },
+    {
+      "id": "P0",
+      "nombre": "fef",
+      "email": "dfds",
+      "tipoPersonaId": "0"
     }
   ],
   "categoriaActivos": [

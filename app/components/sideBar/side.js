@@ -14,7 +14,7 @@ class sideBar extends HTMLElement {
     //ajustes
     let partes = strIn.split("-")
     console.log("adentro: " + partes)
-    if (partes.length > 1) {
+    if (partes.length > 1) { //si tiene un guion
       switch (partes[0]) {
         case "activos": {
           switch (partes[1]) {
@@ -54,6 +54,17 @@ class sideBar extends HTMLElement {
       }
     }
 
+    else{//no tiene guion en "mostrar"
+      switch(partes[0]){
+        case"otros":
+        this.contenedor.innerHTML = 'otros'
+
+        break;
+        case "ajustes":
+          this.contenedor.innerHTML = 'ajustes'
+          break;
+      }
+    }
   }
 
   async render() {
@@ -204,6 +215,14 @@ class sideBar extends HTMLElement {
           <a href="#" class="btnMostrar" >Buscar</a>
         </div>
        
+        <button class="dropdown-btn">Otros
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="#"  class="btnMostrar" mostrar="otros">Agregar</a>
+          <a href="#"  class="btnMostrar" mostrar="ajustes">Editar</a>
+        </div>
+     
       </div>
       
       <div id="main">
