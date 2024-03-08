@@ -17,19 +17,45 @@ class AgregarInfo extends HTMLElement {
         let container = this;
 
         const renderData = (items) => {
-            container.innerHTML = /*html*/ `
-                <form id="searchForm" action="">
-                    <input type="text" id="searchInput" name="searchInput" placeholder="Escribe tu búsqueda">
-                    <button type="submit">Buscar</button>
-                </form>
-            `;
+            // Clear existing content
+            container.innerHTML = '';
+
+            const form = document.createElement('form');
+            form.id = 'searchForm';
+            form.action = '';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'searchInput';
+            input.name = 'searchInput';
+            input.placeholder = 'Escribe tu búsqueda';
+
+            const button = document.createElement('button');
+            button.type = 'submit';
+            button.textContent = 'Buscar';
+
+            form.appendChild(input);
+            form.appendChild(button);
+            container.appendChild(form);
+
             items.forEach(item => {
                 if ('nombre' in item) {
-                    let html = /*html*/ `<div>
+                    const divItem = document.createElement('div');
+
+                    divItem.innerHTML = /*html*/ `
                         <h2>Nombre: ${item.nombre} </h2>
                         <p>Id: ${item.id} </p>
-                    </div> `;
-                    container.innerHTML += html;
+                        <button id="${item.id}" type="button">enviar</button>
+                    `;
+
+                    container.appendChild(divItem);
+
+                    let boton = document.getElementById(`${item.id}`);
+                    console.log(boton);
+
+                    boton.addEventListener('click', function() {
+                        console.log('Botón clickeado');
+                    });
                 }
             });
         };
@@ -50,10 +76,11 @@ class AgregarInfo extends HTMLElement {
             `;
 
             if ('nombre' in searchData) {
-                let html = /*html*/ `<div>
+                let html = /*html*/ `
                     <h2>Nombre: ${searchData.nombre} </h2>
                     <p>Id: ${searchData.id} </p>
-                </div> `;
+                    <button id="${searchData.id}" type="button">enviar</button>
+                `;
                 container.innerHTML += html;
             }
         });
@@ -61,3 +88,4 @@ class AgregarInfo extends HTMLElement {
 }
 
 customElements.define("agregar-info", AgregarInfo);
+
