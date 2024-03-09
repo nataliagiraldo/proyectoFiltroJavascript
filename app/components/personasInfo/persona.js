@@ -1,18 +1,19 @@
 import { agregar } from '/api/api.js';
+import { runAsync } from '/api/api.js';
 
 class personaInfo extends HTMLElement {
 
-    constructor() { //Es una funcion que va a ser llamada solo una vez
-        super() //Agregar todas las clases del HTML
-    }
+  constructor() { //Es una funcion que va a ser llamada solo una vez
+    super() //Agregar todas las clases del HTML
+  }
 
-    connectedCallback() {
-      this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    render() { // Funcion que me va a mostrar
+  render() { // Funcion que me va a mostrar
 
-        this.innerHTML = /*HTML*/ `
+    this.innerHTML = /*HTML*/ `
 
         <style>
 
@@ -233,9 +234,7 @@ class personaInfo extends HTMLElement {
 
 
           <select for="tipoPersonaId" class=" tipoPersonaId" id="tipoPersonaId">
-            <option> tipoPersonaId </option>
-            <option value="0">0 - Natural</option>
-            <option value="1">1 - Juridica</option>
+       
           </select>
       
           <div class="btn-container">
@@ -252,15 +251,46 @@ class personaInfo extends HTMLElement {
       event.preventDefault();
       this.getData();
     });
+    function crearOpciones(dicc) {
+      // Selecciona el elemento select
+      let selectElement = document.getElementById('tipoPersonaId');
+
+      // Elimina las opciones existentes
+      selectElement.innerHTML = '';
+
+      // Crea y añade las nuevas opciones
+      for (let i = 0; i < dicc.length; i++) {
+        let option = document.createElement('option');
+        option.value = dicc[i].id;
+        option.text = dicc[i].id + ": " + dicc[i].nombre;
+        selectElement.add(option);
+      }
+    }
+    
+    async function cargarDatos() {
+      try {
+          const data = await runAsync('http://localhost:3000/tipoPersonas');
+          crearOpciones(data);
+      } catch (error) {
+          console.log('Error al cargar datos:', error);
+      }
   }
   
+  cargarDatos();
+  
+    
+  
+  }
+
+
+
 
   async getData() {
-    const url = `http://localhost:3000/personas`; 
+    const url = `http://localhost:3000/personas`;
     const nombre = document.getElementById('nombre').value;
     const email = document.getElementById('email').value;
     const tipoPersonaId = document.getElementById('tipoPersonaId').value;
-    
+
     const data = {
       "nombre": nombre,
       "email": email,
@@ -268,9 +298,9 @@ class personaInfo extends HTMLElement {
     };
 
     console.log(data);
-    agregar(data, url); 
+    agregar(data, url);
   }
 
 }
-customElements.define("persona-info", personaInfo); 
+customElements.define("persona-info", personaInfo);
 

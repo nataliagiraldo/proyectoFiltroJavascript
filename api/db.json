@@ -68,6 +68,12 @@
       "nombre": "Juan Perez",
       "email": "juanperez@example.com",
       "tipoPersonaId": "1"
+    },
+    {
+      "nombre": "natalia",
+      "email": "natalia@prueba.com",
+      "tipoPersonaId": "1",
+      "id": "0ohi4mx"
     }
   ],
   "categoriaActivos": [
@@ -79,7 +85,11 @@
   "tipoPersonas": [
     {
       "id": "1",
-      "nombre": "Empleado"
+      "nombre": "Natural"
+    },
+    {
+      "id": "2",
+      "nombre": "Juridica"
     }
   ],
   "tipoMovActivos": [
