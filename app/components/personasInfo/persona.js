@@ -246,13 +246,13 @@ class personaInfo extends HTMLElement {
       </div>
 		`;
 
+
     const form = this.querySelector('form');
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       this.getData();
     });
   }
-
   
 
   async getData() {
@@ -260,18 +260,8 @@ class personaInfo extends HTMLElement {
     const nombre = document.getElementById('nombre').value;
     const email = document.getElementById('email').value;
     const tipoPersonaId = document.getElementById('tipoPersonaId').value;
-        let head = new Headers({"Content-type": "application/json"})
-    const options = {method: "GET",
-                      headers: head}
-    let datosPersonas = await fetch(url,options)
-    let jsonData = await datosPersonas.json()
-    let newId = Object.entries(jsonData).length
-
-    newId = newId + 1
     
-
     const data = {
-      "id": newId,
       "nombre": nombre,
       "email": email,
       "tipoPersonaId": tipoPersonaId,

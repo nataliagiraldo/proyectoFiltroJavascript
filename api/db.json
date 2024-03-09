@@ -5,22 +5,13 @@
       "CodTransaccion": "CT001",
       "NroFormulario": 100,
       "marcaId": "1",
-      "categoriaId": "1",
+      "categoriaActivoId": "1",
       "tipoId": "1",
       "valorUnitario": 500,
-      "provedorId": "1",
+      "proveedorId": "1",
       "nroSerial": "SN001",
       "empresaResponsableId": "1",
       "estadoId": "1"
-    },
-    {
-      "nombre": "hjm",
-      "id": "jLOB6dw"
-    },
-    {
-      "nombre": "fsf",
-      "id": "nG_aW2l",
-      "[object HTMLButtonElement]": ""
     }
   ],
   "historialActivos": [
@@ -28,7 +19,7 @@
       "id": "1",
       "activoId": "1",
       "fecha": "2024-03-05",
-      "personaId": "1",
+      "responsableId": "1",
       "estadoId": "2"
     }
   ],
@@ -68,7 +59,7 @@
     {
       "id": "1",
       "fecha": "2002-07-25",
-      "responsableId": "1"
+      "personaId": "1"
     }
   ],
   "personas": [

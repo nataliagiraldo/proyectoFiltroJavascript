@@ -369,10 +369,10 @@ class ActivosInfo extends HTMLElement {
       "CodTransaccion": CodTransaccion,
       "NroFormulario": NroFormulario,
       "marcaId": marcaId,
-      "categoriaId": categoriaId,
+      "categoriaActivoId": categoriaId,
       "tipoId": tipoId,
       "valorUnitario": valorUnitario,
-      "provedorId": provedorId,
+      "proveedorId": provedorId,
       "nroSerial": nroSerial,
       "empresaResponsableId": empresaResponsableId,
       "estadoId": estadoId
