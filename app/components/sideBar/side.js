@@ -22,7 +22,7 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="activos"></form-r >'
               break;
             case "editar":
-              this.contenedor.innerHTML = '<agregar-info info="activos"></agregar-info >'
+              this.contenedor.innerHTML = '<agregar-info info="marcas"></agregar-info >'
               break;
             case "eliminar":
               this.contenedor.innerHTML = ''
@@ -54,12 +54,12 @@ class sideBar extends HTMLElement {
       }
     }
 
-    else{//no tiene guion en "mostrar"
-      switch(partes[0]){
-        case"otros":
-        this.contenedor.innerHTML = 'otros'
+    else {//no tiene guion en "mostrar"
+      switch (partes[0]) {
+        case "otros":
+          this.contenedor.innerHTML = 'otros'
 
-        break;
+          break;
         case "ajustes":
           this.contenedor.innerHTML = 'ajustes'
           break;

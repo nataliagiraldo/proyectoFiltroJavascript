@@ -45,7 +45,7 @@ class AgregarInfo extends HTMLElement {
                     divItem.innerHTML = /*html*/ `
                         <h2>Nombre: ${item.nombre} </h2>
                         <p>Id: ${item.id} </p>
-                        <button id="${item.id}" type="button">enviar</button>
+                        <button id="${item.id}" type="button">mas info</button>
                     `;
 
                     container.appendChild(divItem);
@@ -79,7 +79,7 @@ class AgregarInfo extends HTMLElement {
                 let html = /*html*/ `
                     <h2>Nombre: ${searchData.nombre} </h2>
                     <p>Id: ${searchData.id} </p>
-                    <button id="${searchData.id}" type="button">enviar</button>
+                    <button id="${searchData.id}" type="button">mas info</button>
                 `;
                 container.innerHTML += html;
                 let boton = document.getElementById(`${searchData.id}`);

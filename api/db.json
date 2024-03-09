@@ -12,6 +12,19 @@
       "nroSerial": "SN001",
       "empresaResponsableId": "1",
       "estadoId": "1"
+    },
+    {
+      "id": "n",
+      "CodTransaccion": "sda",
+      "NroFormulario": "as",
+      "marcaId": "1",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": "da",
+      "proveedorId": "1",
+      "nroSerial": "a",
+      "empresaResponsableId": "sdd",
+      "estadoId": "2"
     }
   ],
   "historialActivos": [
@@ -42,13 +55,13 @@
   "marcas": [
     {
       "id": "1",
-      "nombre": "Marca X"
+      "nombre": "lucas"
     }
   ],
   "estados": [
     {
       "id": "1",
-      "nombre": "En stock"
+      "nombre": "Dado de baja"
     },
     {
       "id": "2",
