@@ -195,10 +195,40 @@ const deleteInfoAsync = async (endPoint, targetId) => {
     await deleteInfo(endPoint, targetId);
 };
 
-
-
 // deleteInfoAsync(url, id)
 
+const getInfoFilteredByStateId = async (endPoint, estadoId) => {
+    try {
+        const respuesta = await fetch(endPoint);
+
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+
+            // Filtrar los datos por estadoId
+            const datosFiltrados = datos.filter(item => item.estadoId === estadoId);
+
+            // viewDataHtml(datosFiltrados); // Puedes hacer lo que necesites con los datos filtrados
+            console.log(datosFiltrados);
+
+            return datosFiltrados;
+        } else if (respuesta.status === 401) {
+            console.log('La URL no es correcta');
+        } else if (respuesta.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al administrador');
+        }
+    } catch (error) {
+        console.log('Error en la petición:', error);
+    }
+}
+
+
+const runFilteredAsync = async (endPoint, estadoId) => {
+    return await getInfoFilteredByStateId(endPoint, estadoId);
+}
+
+// runFilteredAsync(url, "1")
 
 
 
@@ -216,5 +246,6 @@ export {
     agregar as agregar,
     runAsync,
     editInfoAsync,
-    deleteInfoAsync
+    deleteInfoAsync,
+    runFilteredAsync
 }

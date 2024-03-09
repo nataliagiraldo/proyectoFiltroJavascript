@@ -1,7 +1,7 @@
 {
   "activos": [
     {
-      "id": "1",
+      "id": "2",
       "CodTransaccion": "CT001",
       "NroFormulario": 100,
       "marcaId": "1",
@@ -14,37 +14,47 @@
       "estadoId": "1"
     },
     {
-      "id": "n",
-      "CodTransaccion": "sda",
-      "NroFormulario": "as",
+      "id": "3",
+      "CodTransaccion": "CT001",
+      "NroFormulario": 100,
       "marcaId": "1",
       "categoriaActivoId": "1",
       "tipoId": "1",
-      "valorUnitario": "da",
+      "valorUnitario": 500,
       "proveedorId": "1",
-      "nroSerial": "a",
-      "empresaResponsableId": "sdd",
+      "nroSerial": "SN001",
+      "empresaResponsableId": "1",
+      "estadoId": "1"
+    },
+    {
+      "id": "4",
+      "CodTransaccion": "CT001",
+      "NroFormulario": 100,
+      "marcaId": "1",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": 500,
+      "proveedorId": "1",
+      "nroSerial": "SN001",
+      "empresaResponsableId": "1",
+      "estadoId": "1"
+    },
+    {
+      "id": "5",
+      "CodTransaccion": "CT001",
+      "NroFormulario": 100,
+      "marcaId": "1",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": 500,
+      "proveedorId": "1",
+      "nroSerial": "SN001",
+      "empresaResponsableId": "1",
       "estadoId": "2"
     }
   ],
-  "historialActivos": [
-    {
-      "id": "1",
-      "activoId": "1",
-      "fecha": "2024-03-05",
-      "responsableId": "1",
-      "estadoId": "2"
-    }
-  ],
-  "detalleMovimiento": [
-    {
-      "id": "1",
-      "fecha": "2024-03-05",
-      "activoId": "1",
-      "comentario": "Asignado a Juan Perez",
-      "asignacionId": "1"
-    }
-  ],
+  "historialActivos": [],
+  "detalleMovimiento": [],
   "proveedores": [
     {
       "id": "1",
@@ -81,18 +91,6 @@
       "nombre": "Juan Perez",
       "email": "juanperez@example.com",
       "tipoPersonaId": "1"
-    },
-    {
-      "nombre": "natalia",
-      "email": "natalia@prueba.com",
-      "tipoPersonaId": "1",
-      "id": "0ohi4mx"
-    },
-    {
-      "nombre": "natalia",
-      "email": "nata",
-      "tipoPersonaId": "1",
-      "id": "jRxNfkX"
     }
   ],
   "categoriaActivos": [
