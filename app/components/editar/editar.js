@@ -55,7 +55,7 @@ class Editar extends HTMLElement {
                     let boton = document.getElementById(`button${item.id}`);
 
 
-                    boton.addEventListener('click', function (e) {
+                    boton.addEventListener('click', async function (e) {
                         e.preventDefault();
                         let nombre = document.getElementById(`nombre${item.id}`);
                         let newInfo = nombre.value;
@@ -66,7 +66,7 @@ class Editar extends HTMLElement {
                         console.log("event listener url", url);
                         console.log("event listener paramName", paramName);
                         console.log("event listener newInfo", newInfo);
-                        editInfoAsync(url, id, paramName, newInfo);
+                        await editInfoAsync(url, id, paramName, newInfo);
                     });
                 }
             });
@@ -99,7 +99,7 @@ class Editar extends HTMLElement {
                 let boton = document.getElementById(`editButton${searchData.id}`);
 
 
-                boton.addEventListener('click', function (e) {
+                boton.addEventListener('click', async function (e) {
                     e.preventDefault();
                     let nombre = document.getElementById(`nombre${searchData.nombre}`);
                     let newInfo = nombre.value;
@@ -110,7 +110,7 @@ class Editar extends HTMLElement {
                     console.log("event listener url", url);
                     console.log("event listener paramName", paramName);
                     console.log("event listener newInfo", newInfo);
-                    editInfoAsync(url, id, paramName, newInfo);
+                    await editInfoAsync(url, id, paramName, newInfo);
                 });
             }
         });

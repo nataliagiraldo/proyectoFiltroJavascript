@@ -65,7 +65,7 @@
   "marcas": [
     {
       "id": "1",
-      "nombre": "lucas"
+      "nombre": "4"
     }
   ],
   "estados": [
@@ -88,8 +88,8 @@
   "personas": [
     {
       "id": "1",
-      "nombre": "Juan Perez",
-      "email": "juanperez@example.com",
+      "nombre": "natalia",
+      "email": "ok1",
       "tipoPersonaId": "1"
     }
   ],
