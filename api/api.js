@@ -157,24 +157,6 @@ const editInfoAsync = async (endPoint, targetId, paramName, paramValue) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export {
     getInfoAsync as getInfoAsync,
     agregar as agregar,

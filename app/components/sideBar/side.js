@@ -33,7 +33,7 @@ class sideBar extends HTMLElement {
           }
         }
           break;
-        case "persona": {
+        case "marcas": {
           switch (partes[1]) {
             case "agregar":
               this.contenedor.innerHTML = ''
