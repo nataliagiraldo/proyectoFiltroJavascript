@@ -1,5 +1,5 @@
 const url = 'http://localhost:3000/activos';
-const id = "IZNXI1L";
+const id = "MoIaK_o";
 const newId = "natalia"
 const paramName = "nombre"
 
@@ -154,6 +154,60 @@ const editInfoAsync = async (endPoint, targetId, paramName, paramValue) => {
 
 // editInfoAsync(url, id, paramName, newId)
 
+const deleteInfo = async (endPoint, targetId) => {
+    try {
+        // Obtener la información actual
+        const response = await fetch(`${endPoint}`);
+
+        // Verificar si la respuesta es exitosa (código 200)
+        if (response.status === 200) {
+            const data = await response.json();
+
+            // Buscar el índice del objeto con el ID específico
+            const indexToDelete = data.findIndex(item => item.id === targetId);
+
+            // Verificar si se encontró el objeto con el ID específico
+            if (indexToDelete !== -1) {
+                // Eliminar el objeto del array
+                data.splice(indexToDelete, 1);
+
+                // Realizar la solicitud de eliminación al servidor
+                const deleteResponse = await fetch(`${endPoint}/${targetId}`, {
+                    method: 'DELETE',
+                });
+
+                // Verificar si la eliminación fue exitosa (código 204)
+                if (deleteResponse.status === 204) {
+                    console.log('Elemento eliminado con éxito');
+                } else {
+                    console.log('Error al eliminar el elemento');
+                }
+            } else {
+                console.log('Elemento no encontrado');
+            }
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+const deleteInfoAsync = async (endPoint, targetId) => {
+    await deleteInfo(endPoint, targetId);
+};
+
+
+
+// deleteInfoAsync(url, id)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -161,5 +215,6 @@ export {
     getInfoAsync as getInfoAsync,
     agregar as agregar,
     runAsync,
-    editInfoAsync
+    editInfoAsync,
+    deleteInfoAsync
 }

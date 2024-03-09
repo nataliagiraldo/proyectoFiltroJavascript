@@ -1,6 +1,6 @@
-import { runAsync, getInfoAsync } from '/api/api.js';
+import { runAsync, getInfoAsync, deleteInfoAsync } from '/api/api.js';
 
-class AgregarInfo extends HTMLElement {
+class EliminarInfo extends HTMLElement {
     constructor() {
         super();
         this.info = null;
@@ -45,7 +45,7 @@ class AgregarInfo extends HTMLElement {
                     divItem.innerHTML = /*html*/ `
                         <h2>Nombre: ${item.nombre} </h2>
                         <p>Id: ${item.id} </p>
-                        <button id="${item.id}" type="button">enviar</button>
+                        <button id="${item.id}" type="button">eliminar</button>
                     `;
 
                     container.appendChild(divItem);
@@ -53,8 +53,9 @@ class AgregarInfo extends HTMLElement {
                     let boton = document.getElementById(`${item.id}`);
                     console.log(boton);
 
-                    boton.addEventListener('click', function() {
-                        console.log('Botón clickeado');
+                    boton.addEventListener('click', function () {
+                        let id = item.id
+                        deleteInfoAsync(url, id)
                     });
                 }
             });
@@ -79,19 +80,19 @@ class AgregarInfo extends HTMLElement {
                 let html = /*html*/ `
                     <h2>Nombre: ${searchData.nombre} </h2>
                     <p>Id: ${searchData.id} </p>
-                    <button id="${searchData.id}" type="button">enviar</button>
+                    <button id="${searchData.id}" type="button">eliminar</button>
                 `;
                 container.innerHTML += html;
                 let boton = document.getElementById(`${searchData.id}`);
-                    console.log(boton);
+                console.log(boton);
 
-                    boton.addEventListener('click', function() {
-                        console.log('Botón clickeado');
-                    });
+                boton.addEventListener('click', function () {
+                    let id = searchData.id
+                    deleteInfoAsync(url, id)
+                });
             }
         });
     }
 }
 
-customElements.define("agregar-info", AgregarInfo);
-
+customElements.define("eliminar-info", EliminarInfo);

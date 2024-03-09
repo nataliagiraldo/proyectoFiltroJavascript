@@ -14,100 +14,8 @@
       "estadoId": "1"
     },
     {
-      "nombre": "yei",
-      "id": "fsf"
-    },
-    {
-      "nombre": "hola",
-      "id": "c7258jt"
-    },
-    {
-      "nombre": "gh",
-      "id": "ODp--z2"
-    },
-    {
-      "nombre": "yy",
-      "id": "haPwDQn"
-    },
-    {
-      "nombre": "h",
-      "id": "YB32Myj"
-    },
-    {
       "nombre": "hjm",
       "id": "jLOB6dw"
-    },
-    {
-      "nombre": "fy",
-      "id": "ZyHa9NA"
-    },
-    {
-      "nombre": "gf",
-      "id": "qtTdlEp"
-    },
-    {
-      "nombre": "123",
-      "id": "wZRCFOr"
-    },
-    {
-      "nombre": "hola",
-      "id": "hola"
-    },
-    {
-      "nombre": "mich",
-      "id": "ScrrI6J"
-    },
-    {
-      "nombre": "si",
-      "id": "Dtbj7A5"
-    },
-    {
-      "nombre": "hhy",
-      "id": "kFNDj6L"
-    },
-    {
-      "nombre": "hola",
-      "id": "t4pl4YQ"
-    },
-    {
-      "nombre": "rrr",
-      "id": "i1ud-rw"
-    },
-    {
-      "nombre": "h9",
-      "id": "ExWroP7"
-    },
-    {
-      "nombre": "pani",
-      "id": "ecXsTJt"
-    },
-    {
-      "nombre": "pani",
-      "id": "GIjuc5e"
-    },
-    {
-      "nombre": "pani",
-      "id": "h5RVEPq"
-    },
-    {
-      "nombre": "pani",
-      "id": "UkhIVDf"
-    },
-    {
-      "nombre": "pani",
-      "id": "RKrdvRf"
-    },
-    {
-      "nombre": "pani",
-      "id": "LKgbkya"
-    },
-    {
-      "nombre": "frank",
-      "id": "ULUuHw0"
-    },
-    {
-      "nombre": "frank y violeta",
-      "id": "MoIaK_o"
     },
     {
       "nombre": "fsf",
@@ -169,12 +77,6 @@
       "nombre": "Juan Perez",
       "email": "juanperez@example.com",
       "tipoPersonaId": "1"
-    },
-    {
-      "id": "P0",
-      "nombre": "fef",
-      "email": "dfds",
-      "tipoPersonaId": "0"
     }
   ],
   "categoriaActivos": [
