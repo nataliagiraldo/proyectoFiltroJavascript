@@ -176,7 +176,7 @@ body, html {
         </style>
         <div class="container">
             <form class="form" action="">
-                <h2 class="formatoH2">Form</h2>
+                <h2 class="formatoH2">${(this.info).toUpperCase()}</h2>
                 <div class="input-field">
                     <input required="" autocomplete="off" type="text" name="nombre" id="nombre${this.info}" />
                     <label for="username">Nombre</label>
