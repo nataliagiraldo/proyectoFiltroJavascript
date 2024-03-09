@@ -207,7 +207,7 @@ class personaInfo extends HTMLElement {
         
         <form class="form" action="">
 
-          <h2 class="formatoH2">Form</h2>
+          <h2 class="formatoH2">Agregar Persona</h2>
           <div class="input-field">
             <input
               required=""
@@ -234,6 +234,8 @@ class personaInfo extends HTMLElement {
 
 
           <select for="tipoPersonaId" class=" tipoPersonaId" id="tipoPersonaId">
+          <option value="tipo persona" >Tipo de persona</option>
+
        
           </select>
       
@@ -254,10 +256,7 @@ class personaInfo extends HTMLElement {
     function crearOpciones(dicc) {
       // Selecciona el elemento select
       let selectElement = document.getElementById('tipoPersonaId');
-
-      // Elimina las opciones existentes
-      selectElement.innerHTML = '';
-
+      
       // Crea y añade las nuevas opciones
       for (let i = 0; i < dicc.length; i++) {
         let option = document.createElement('option');
@@ -266,6 +265,10 @@ class personaInfo extends HTMLElement {
         selectElement.add(option);
       }
     }
+    
+
+
+
     
     async function cargarDatos() {
       try {

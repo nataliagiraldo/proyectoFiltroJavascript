@@ -1,4 +1,5 @@
 import { agregar } from '/api/api.js';
+import { runAsync } from '/api/api.js';
 
 class ActivosInfo extends HTMLElement {
 
@@ -11,7 +12,7 @@ class ActivosInfo extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
+    this.innerHTML = /* html */`
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -205,7 +206,7 @@ class ActivosInfo extends HTMLElement {
 
       <div>
         
-        <h2 class="formatoH2">Form</h2>
+        <h2 class="formatoH2">Agregar Activos</h2>
         <div class="input-field">
           <input
             required=""
@@ -242,41 +243,20 @@ class ActivosInfo extends HTMLElement {
           <label for="NroFormulario">NroFormulario</label>
         </div>
 
-        <div class="input-field">
-          <input
-            required=""
-            autocomplete="off"
-            type="text"
-            name="marcaId"
-            id="marcaId"
-            class="marcaId"
-          />
-          <label for="marcaId">marcaId</label>
-        </div>
+        <select for="marcaId" class="estadoId" id="marcaId">
+        <option value="">Seleccione una marca</option>
+          
+        </select>
 
-        <div class="input-field">
-          <input
-            required=""
-            autocomplete="off"
-            type="text"
-            name="categoriaId"
-            id="categoriaId"
-            class="categoriaId"
-          />
-          <label for="categoriaId">categoriaId</label>
-        </div>
+        <select for="categoriaId" class="estadoId" id="categoriaId">
+        <option value="">Seleccione una categoria</option>
+          
+        </select>
 
-        <div class="input-field">
-          <input
-            required=""
-            autocomplete="off"
-            type="text"
-            name="tipoId"
-            id="tipoId"
-            class="tipoId"
-          />
-          <label for="tipoId">tipoId</label>
-        </div>
+        <select for="tipoId" class="estadoId" id="tipoId">
+        <option value="">Seleccione una tipo</option>
+          
+        </select>
         
         <div action="">
           <div class="input-field">
@@ -291,17 +271,10 @@ class ActivosInfo extends HTMLElement {
             <label for="valorUnitario">Valor Unitario</label>
           </div>
 
-          <div class="input-field">
-            <input
-              required=""
-              autocomplete="off"
-              type="text"
-              name="provedorId"
-              id="provedorId"
-              class="provedorId"
-            />
-            <label for="provedorId">provedorId</label>
-          </div>
+          <select for="proveedorId" class="estadoId" id="proveedorId">
+            <option value="">Seleccione un proveedor</option>
+          
+           </select>
 
           <div class="input-field">
             <input
@@ -329,11 +302,8 @@ class ActivosInfo extends HTMLElement {
 
 
           <select for="estadoId" class=" estadoId" id="estadoId">
-            <option> estadoId </option>
-            <option value="0">0 - No Asignado</option>
-            <option value="1">1 - Asignado</option>
-            <option value="2">2 - Dado de baja por daño</option>
-            <option value="3">3 - En reparación y/o Garantía</option>
+            <option> Seleccione un estado </option>
+            
           </select>
     
           <div class="btn-container">
@@ -349,6 +319,49 @@ class ActivosInfo extends HTMLElement {
       event.preventDefault();
       this.getData();
     });
+
+    let elementMarca = "marcaId"
+    let endpointMarca = "marcas"
+    let elementCategoria = "categoriaId"
+    let endpointCategoria = "categoriaActivos"
+    let elementTipo = "tipoId"
+    let endpointTipo = "tipoActivos"
+    let elementProvedor = "proveedorId"
+    let endpointProvedor = "proveedores"
+    let elementEstado = "estadoId"
+    let endpointEstado = "estados"
+
+
+    function crearOpciones(dicc, element) {
+      // Selecciona el elemento select
+      let selectElement = document.getElementById(element);
+
+      // Crea y añade las nuevas opciones
+      for (let i = 0; i < dicc.length; i++) {
+        let option = document.createElement('option');
+        option.value = dicc[i].id;
+        option.text = dicc[i].id + ": " + dicc[i].nombre;
+        selectElement.add(option);
+      }
+    }
+
+    async function cargarDatos(element, endpoint) {
+      try {
+        const data = await runAsync('http://localhost:3000/' + endpoint);
+        crearOpciones(data, element);
+      } catch (error) {
+        console.log('Error al cargar datos:', error);
+      }
+    }
+
+    cargarDatos(elementMarca, endpointMarca);
+    cargarDatos(elementCategoria, endpointCategoria);
+    cargarDatos(elementTipo, endpointTipo);
+    cargarDatos(elementProvedor, endpointProvedor);
+    cargarDatos(elementEstado, endpointEstado);
+
+
+
   }
 
   getData() {
@@ -359,7 +372,7 @@ class ActivosInfo extends HTMLElement {
     const categoriaId = document.getElementById('categoriaId').value;
     const tipoId = document.getElementById('tipoId').value;
     const valorUnitario = document.getElementById('valorUnitario').value;
-    const provedorId = document.getElementById('provedorId').value;
+    const provedorId = document.getElementById('proveedorId').value;
     const nroSerial = document.getElementById('nroSerial').value;
     const empresaResponsableId = document.getElementById('empresaResponsableId').value;
     const estadoId = document.getElementById('estadoId').value;
