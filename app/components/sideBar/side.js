@@ -19,38 +19,128 @@ class sideBar extends HTMLElement {
         case "activos": {
           switch (partes[1]) {
             case "agregar":
-              this.contenedor.innerHTML = '<form-r info="activos"></form-r >'
+              this.contenedor.innerHTML = '<activos-info info="activos"></activos-info>'
               break;
             case "editar":
-              this.contenedor.innerHTML = '<agregar-info info="marcas"></agregar-info >'
+              this.contenedor.innerHTML = '<edi-tar info="activos"></edi-tar>'
               break;
             case "eliminar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<eliminar-info info="activos"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<busca-dor info="activos"></busca-dor>'
               break;
           }
         }
           break;
-        case "marcas": {
+
+        case "Marcas": {
           switch (partes[1]) {
             case "agregar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<form-r info="marcas"></form-r>'
               break;
             case "editar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<edi-tar info="marcas"></edi-tar>'
               break;
             case "eliminar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<eliminar-info info="marcas"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = ''
+              this.contenedor.innerHTML = '<busca-dor info="marcas"></busca-dor>'
               break;
           }
         }
           break;
-        //agregar "cases" para las otras entidades :)
+
+        case "Persona": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<persona-info info="personas"></persona-info>'
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<edi-tar info="personas"></edi-tar>'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = '<eliminar-info info="personas"></eliminar-info>'
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = '<busca-dor info="personas"></busca-dor>'
+              break;
+          }
+        }
+          break;
+
+        case "Estado": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<form-r info="estados"></form-r>';
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<edi-tar info="estados"></edi-tar>'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = '<eliminar-info info="estados"></eliminar-info>'
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = '<busca-dor info="estados"></busca-dor>'
+              break;
+          }
+          break;
+        }
+
+        case "tipoPersonas": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<form-r info="tipoPersonas"></form-r>';
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<edi-tar info="tipoPersonas"></edi-tar>'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = '<eliminar-info info="tipoPersonas"></eliminar-info>'
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = '<busca-dor info="tipoPersonas"></busca-dor>'
+              break;
+          }
+          break;
+        }
+
+        case "tipoMovActivos": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<form-r info="tipoMovActivos"></form-r>';
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<edi-tar info="tipoMovActivos"></edi-tar>'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = '<eliminar-info info="tipoMovActivos"></eliminar-info>'
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = '<busca-dor info="tipoMovActivos"></busca-dor>'
+              break;
+          }
+          break;
+        }
+
+        case "tipoActivos": {
+          switch (partes[1]) {
+            case "agregar":
+              this.contenedor.innerHTML = '<form-r info="tipoActivos"></form-r>';
+              break;
+            case "editar":
+              this.contenedor.innerHTML = '<edi-tar info="tipoActivos"></edi-tar>'
+              break;
+            case "eliminar":
+              this.contenedor.innerHTML = '<eliminar-info info="tipoActivos"></eliminar-info>'
+              break;
+            case "buscar":
+              this.contenedor.innerHTML = '<busca-dor info="tipoMovActivos"></busca-dor>'
+              break;
+          }
+          break;
+        }
       }
     }
 
@@ -71,7 +161,10 @@ class sideBar extends HTMLElement {
     this.innerHTML = `
       <link rel="stylesheet" href="formR.css" type="module">
       <style>
-      body {
+
+      body,html{
+        margin:0;
+        height: 100%;
         font-family: "Lato", sans-serif;
       }
       
@@ -79,10 +172,8 @@ class sideBar extends HTMLElement {
         height: 100%;
         width: 0;
         position: fixed;
-        z-index: 1;
-        top: 0;
         left: 0;
-        background-color: #111;
+        background-color:#00008b;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
@@ -91,14 +182,13 @@ class sideBar extends HTMLElement {
       .sidebar a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
-        
         color: #818181;
         display: block;
         transition: 0.3s;
       }
       
       .sidebar a:hover {
-        color: #f1f1f1;
+        color: white;
       }
       
       .sidebar .closebtn {
@@ -110,27 +200,43 @@ class sideBar extends HTMLElement {
       }
       
       .openbtn {
+        top:0;
         font-size: 20px;
         cursor: pointer;
-        background-color: #111;
+        background-color: #00008b;
         color: white;
         padding: 10px 15px;
         border: none;
       }
       
       .openbtn:hover {
-        background-color: #444;
+        background-color: blue;
+        transition: 0.3s;
       }
       
       #main {
+        margin:0;
         transition: margin-left .5s;
-        padding: 16px;
+        padding: 0 16px;
+        height:92%;
+        color:  #00008b;
+        font-size: 20px;
       }
-        .sidenav a, .dropdown-btn {
+
+      #contenedor{
+        width: 100%;
+        height:90%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .sidenav a, .dropdown-btn {
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 20px;
-        color: #818181;
+        color: white;
         display: block;
         border: none;
         background: none;
@@ -139,6 +245,26 @@ class sideBar extends HTMLElement {
         cursor: pointer;
         outline: none;
       }
+
+      .navbar {
+        margin: 0 10px; 
+        height; 10px;
+        display: flex;
+        align-items: center;
+    }
+
+      .navbar img {
+        width: 81px; 
+        height: auto; 
+        margin-right: 10px;
+    }
+
+ 
+    #contenedor img {
+      width: 40%; 
+      height: auto; 
+      margin-right: 10px; /* 
+    }
       
       /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
       @media screen and (max-height: 450px) {
@@ -148,6 +274,11 @@ class sideBar extends HTMLElement {
       </style>
       </head>
       <body>
+
+      <div class="navbar">
+        <img src="storage/img/logo.png" alt="Logo">
+        <h2>CampusLands</h2>
+      </div>
       
       <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -173,46 +304,46 @@ class sideBar extends HTMLElement {
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#" class="btnMostrar" >Agregar</a>
-          <a href="#" class="btnMostrar" >Editar</a>
-          <a href="#" class="btnMostrar" >Eliminar</a>
-          <a href="#" class="btnMostrar" >Buscar</a>
+          <a href="#" class="btnMostrar" mostrar="Persona-agregar" >Agregar</a>
+          <a href="#" class="btnMostrar" mostrar="Persona-editar">Editar</a>
+          <a href="#" class="btnMostrar" mostrar="Persona-eliminar">Eliminar</a>
+          <a href="#" class="btnMostrar" mostrar="Persona-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Estado 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#" class="btnMostrar" >Agregar</a>
-          <a href="#" class="btnMostrar" >Editar</a>
-          <a href="#" class="btnMostrar" >Eliminar</a>
-          <a href="#" class="btnMostrar" >Buscar</a>
+          <a href="#" class="btnMostrar" mostrar="Estado-agregar">Agregar</a>
+          <a href="#" class="btnMostrar" mostrar="Estado-editar">Editar</a>
+          <a href="#" class="btnMostrar" mostrar="Estado-eliminar">Eliminar</a>
+          <a href="#" class="btnMostrar" mostrar="Estado-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo persona 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#" class="btnMostrar" >Agregar</a>
-          <a href="#" class="btnMostrar" >Editar</a>
-          <a href="#" class="btnMostrar" >Eliminar</a>
-          <a href="#" class="btnMostrar" >Buscar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoPersonas-agregar">Agregar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoPersonas-editar">Editar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoPersonas-eliminar">Eliminar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoPersonas-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo MovimentoAct 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#" class="btnMostrar" >Agregar</a>
-          <a href="#" class="btnMostrar" >Editar</a>
-          <a href="#" class="btnMostrar" >Eliminar</a>
-          <a href="#" class="btnMostrar" >Buscar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoMovActivos-agregar">Agregar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoMovActivos-editar">Editar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoMovActivos-eliminar">Eliminar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoMovActivos-buscar">Buscar</a>
         </div>
         <button class="dropdown-btn">Tipo activo 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#" class="btnMostrar" >Agregar</a>
-          <a href="#" class="btnMostrar" >Editar</a>
-          <a href="#" class="btnMostrar" >Eliminar</a>
-          <a href="#" class="btnMostrar" >Buscar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoActivos-agregar">Agregar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoActivos-editar">Editar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoActivos-eliminar">Eliminar</a>
+          <a href="#" class="btnMostrar" mostrar="tipoActivos-buscar">Buscar</a>
         </div>
        
         <button class="dropdown-btn">Otros
@@ -226,11 +357,10 @@ class sideBar extends HTMLElement {
       </div>
       
       <div id="main">
-        <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>
+        <button class="openbtn" onclick="openNav()">☰</button>
         <div id="contenedor">
-
-        <h2>Collapsed Sidebar</h2>
-        <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
+          <h2>SISTEMA DE GESTION DE ACTIVOS</h2>
+          <img src="storage/img/astronauta.png" alt="Logo">
         </div> 
       </div>
       

@@ -28,10 +28,10 @@ class personaInfo extends HTMLElement {
                 margin: 0;
                 padding: 0;
                 height: 100%;
-                display: flex;
                 justify-content: center;
                 align-items: center;
               }
+
               .container {
                   flex-direction: column;
                   display: flex;
