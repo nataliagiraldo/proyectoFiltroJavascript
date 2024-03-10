@@ -1,5 +1,5 @@
-const url = 'http://localhost:3000/activos';
-const id = "MoIaK_o";
+const url = 'http://localhost:3000/personas';
+const id = "1";
 const newId = "natalia"
 const paramName = "nombre"
 
@@ -230,6 +230,74 @@ const runFilteredAsync = async (endPoint, estadoId) => {
 
 // runFilteredAsync(url, "1")
 
+const editOrAddInfo = async (endPoint, targetId, paramName, paramValue) => {
+    try {
+        // Obtener la información actual
+        const response = await fetch(`${endPoint}`);
+
+        if (response.status === 200) {
+            const data = await response.json();
+
+            // Buscar el objeto con el ID específico
+            const targetObject = data.find(item => item.id === targetId);
+
+            if (targetObject) {
+                // Si se encuentra el objeto, verificar y actualizar el parámetro específico
+                if (!targetObject[paramName]) {
+                    // Si el campo no existe, crear un nuevo array que contenga el valor ingresado
+                    targetObject[paramName] = [paramValue];
+                } else {
+                    // Si el campo ya existe, agregar el nuevo valor al array
+                    targetObject[paramName].push(paramValue);
+                }
+
+                // Realizar la solicitud de actualización
+                const updateResponse = await fetch(`${endPoint}/${targetId}`, {
+                    method: 'PUT',
+                    headers: myHeaders,
+                    body: JSON.stringify(targetObject)
+                });
+
+                if (updateResponse.status === 200) {
+                    console.log('Objeto actualizado con éxito:', targetObject);
+                    return targetObject;
+                } else {
+                    console.log('Error al intentar actualizar el objeto. Consulte al Administrador');
+                }
+            } else {
+                // Si no se encuentra el objeto
+                console.log('El producto con el ID especificado no existe');
+            }
+        } else if (response.status === 401) {
+            console.log('La URL no es correcta');
+        } else if (response.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al Administrador');
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const editOrAddInfoAsync = async (endPoint, targetId, paramName, paramValue) => {
+    const updatedObject = await editOrAddInfo(endPoint, targetId, paramName, paramValue);
+    return updatedObject;
+}
+
+
+
+
+// let paramNam = "asignacion"
+// let x = {
+//     "id": "1",
+//     "nombre": "Computadoras"
+// }
+
+// editOrAddInfoAsync(url, id, paramNam, x)
+
+
+
 
 
 
@@ -247,5 +315,6 @@ export {
     runAsync,
     editInfoAsync,
     deleteInfoAsync,
-    runFilteredAsync
+    runFilteredAsync,
+    editOrAddInfoAsync
 }

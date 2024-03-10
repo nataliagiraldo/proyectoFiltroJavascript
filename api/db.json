@@ -53,8 +53,6 @@
       "estadoId": "2"
     }
   ],
-  "historialActivos": [],
-  "detalleMovimiento": [],
   "proveedores": [
     {
       "id": "1",
@@ -78,19 +76,28 @@
       "nombre": "En uso"
     }
   ],
-  "asignaciones": [
-    {
-      "id": "1",
-      "fecha": "2002-07-25",
-      "personaId": "1"
-    }
-  ],
   "personas": [
     {
       "id": "1",
       "nombre": "natalia",
       "email": "ok1",
-      "tipoPersonaId": "1"
+      "tipoPersonaId": "1",
+      "asignaciones": [
+        {
+          "id": "1",
+          "fecha": "2002-07-25",
+          "personaId": "1",
+          "detalleMovimiento": [
+            {
+              "id": "1",
+              "fecha": "2024-03-05",
+              "activoId": "1",
+              "comentario": "Asignado a Juan Perez",
+              "asignacionId": "1"
+            }
+          ]
+        }
+      ]
     }
   ],
   "categoriaActivos": [
