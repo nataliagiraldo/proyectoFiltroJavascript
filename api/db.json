@@ -3,11 +3,11 @@
     {
       "id": "1",
       "CodTransaccion": "CT001",
-      "NroFormulario": 100,
+      "NroFormulario": "100",
       "marcaId": "1",
       "categoriaActivoId": "1",
       "tipoId": "1",
-      "valorUnitario": 500,
+      "valorUnitario": "200",
       "proveedorId": "1",
       "nroSerial": "SN001",
       "empresaResponsableId": "1",
@@ -28,22 +28,15 @@
       "id": "1",
       "fecha": "2024-03-05",
       "activoId": "1",
-      "comentario": "Asignado a Juan Perez",
+      "comentario": null,
       "asignacionId": "1"
     },
     {
-      "fecha": "2024-03-06",
-      "activoId": "Select",
-      "comentario": "lo que sea",
-      "asignacionId": "1",
-      "id": "NP4wz1u"
-    },
-    {
+      "id": "2",
       "fecha": "2024-03-05",
       "activoId": "1",
-      "comentario": "idk",
-      "asignacionId": "2",
-      "id": "X01IqT3"
+      "comentario": null,
+      "asignacionId": "1"
     }
   ],
   "proveedores": [
