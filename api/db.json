@@ -37,6 +37,13 @@
       "activoId": "1",
       "comentario": "hola",
       "asignacionId": "1"
+    },
+    {
+      "fecha": "2024-03-05",
+      "activoId": "1",
+      "comentario": "lo que sea",
+      "asignacionId": "2",
+      "id": "Rps4FOv"
     }
   ],
   "proveedores": [

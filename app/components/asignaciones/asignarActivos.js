@@ -5,19 +5,21 @@ class AsignarActivos extends HTMLElement {
         super();
     }
 
-    getData = (item) => {
+    getData = () => {
         const url = 'http://localhost:3000/detalleMovimiento';
 
-        const fecha = document.getElementById(`fecha${item.id}`).value;
-        const activoId = document.getElementById(`activoId${item.id}`).value;
-        const comentario = document.getElementById(`comentario${item.id}`).value;
-        const id = item.id;
+        const fecha = document.getElementById(`fecha`).value;
+        const activoId = document.getElementById(`activoId`).value;
+        const comentario = document.getElementById(`comentario`).value;
+        const idResponsable = document.getElementById(`idResponsable`).value;
+        
+        
 
         const data = {
             fecha: fecha,
             activoId: activoId,
             comentario: comentario,
-            asignacionId: id
+            asignacionId: idResponsable
         };
 
         console.log(data);
@@ -61,42 +63,41 @@ class AsignarActivos extends HTMLElement {
             form.appendChild(button);
             container.appendChild(form);
 
-            for (const item of items) {
-                let detalles = 'http://localhost:3000/detalleMovimiento';
-                let info = await runFiltered(detalles, item.id);
+            const divItem2 = document.createElement('div');
+                divItem2.innerHTML = `
+                <h3>Asignar activo<h3>
+                <form action="#">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" value="2024-03-05" required><br>
+                    <label for="activoId">Activo ID:</label>
+                    <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId">
+                    <option value="" >Activo id</option>
 
-                const divItem = document.createElement('div');
-                divItem.innerHTML = `
-                    <p>Nombre: ${item.nombre}</p>
-                    <p>ID: ${item.id}</p>
-                    <h3>Asignar activo<h3>
-                    <form action="#">
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha${item.id}" name="fecha" value="2024-03-05" required><br>
-                        <label for="activoId">Activo ID:</label>
-                        <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId${item.id}">
-                        <option value="" >Activo id</option>
+   
+                     </select>
+                    <br>
+                    <label for="comentario">Comentario:</label>
+                    
+                    <input type="text" id="comentario" name="comentario" value="" required><br>
+                    <select class=" tipoPersonaId" id="idResponsable">
+                        <option value="" > idResponsable </option>
+                    </select>
+                    <button id="button" type="button">Enviar</button>
+                </form>
+                    
+                `; 
+                container.appendChild(divItem2);
 
-       
-                         </select>
-                        <br>
-                        <label for="comentario">Comentario:</label>
-                        <input type="text" id="comentario${item.id}" name="comentario" value="" required><br>
-                        <button id="${item.id}" type="button">Enviar</button>
-                    </form>
-                `;
+                let elementActivo = `activoId`;
+                let endpointActivo = "activos";
+                let elementResponsable = `idResponsable`;
+                let endpointResponsable = "personas";
 
-                container.appendChild(divItem);
 
-                let boton = document.getElementById(`${item.id}`);
-                console.log(boton);
-                boton.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    this.getData(item);
-                });
-                function crearOpciones(dicc) {
+
+                function crearOpciones(dicc, element) {
                     // Selecciona el elemento select
-                    let selectElement = document.getElementById(`activoId${item.id}`);
+                    let selectElement = document.getElementById(element);
 
                     // Crea y añade las nuevas opciones
                     for (let i = 0; i < dicc.length; i++) {
@@ -107,20 +108,42 @@ class AsignarActivos extends HTMLElement {
                     }
                 }
 
-
-
-
-
-                async function cargarDatos() {
+                async function cargarDatos(element, endpoint) {
                     try {
-                        const data = await runAsync('http://localhost:3000/activos');
-                        crearOpciones(data);
+                        const data = await runAsync('http://localhost:3000/' + endpoint);
+                        crearOpciones(data, element);
                     } catch (error) {
                         console.log('Error al cargar datos:', error);
                     }
                 }
 
-                cargarDatos();
+                cargarDatos(elementActivo, endpointActivo);
+                cargarDatos(elementResponsable, endpointResponsable);
+
+                let boton = document.getElementById(`button`);
+                console.log(boton);
+                boton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    this.getData();
+                });
+
+
+            
+
+            for (const item of items) {
+                let detalles = 'http://localhost:3000/detalleMovimiento';
+                let info = await runFiltered(detalles, item.id);
+
+                const divItem = document.createElement('div');
+                divItem.innerHTML = `
+                    <p>Nombre: ${item.nombre}</p>
+                    <p>ID: ${item.id}</p>
+                    
+                `;
+
+                container.appendChild(divItem);
+
+                
 
                 if (info.length > 0) {
                     const divItem2 = document.createElement('div');
@@ -154,56 +177,11 @@ class AsignarActivos extends HTMLElement {
             let html = `
                 <p>Nombre: ${searchData.nombre}</p>
                 <p>ID: ${searchData.id}</p>
-                <h3>Asignar activo<h3>
-                <form action="#">
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha${searchData.id}" name="fecha" value="2024-03-05" required><br>
-                    <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId${searchData.id}">
-                        <option value="" >Activo id</option>
-
-       
-                         </select>
-                    <label for="comentario">Comentario:</label>
-                    <input type="text" id="comentario${searchData.id}" name="comentario" value="" required><br>
-                    <button id="${searchData.id}" type="button">Enviar</button>
-                </form>
+                
             `;
             container.innerHTML += html;
 
-            let boton = document.getElementById(`${searchData.id}`);
-            console.log(boton);
-
-            boton.addEventListener('click', (event) => {
-                event.preventDefault();
-                this.getData(searchData);
-            });
-            function crearOpciones(dicc) {
-                // Selecciona el elemento select
-                let selectElement = document.getElementById(`activoId${searchData.id}`);
-
-                // Crea y añade las nuevas opciones
-                for (let i = 0; i < dicc.length; i++) {
-                    let option = document.createElement('option');
-                    option.value = dicc[i].id;
-                    option.text = dicc[i].id ;
-                    selectElement.add(option);
-                }
-            }
-
-
-
-
-
-            async function cargarDatos() {
-                try {
-                    const data = await runAsync('http://localhost:3000/activos');
-                    crearOpciones(data);
-                } catch (error) {
-                    console.log('Error al cargar datos:', error);
-                }
-            }
-
-            cargarDatos();
+            
             let detalles = 'http://localhost:3000/detalleMovimiento';
             let info = await runFiltered(detalles, searchData.id);
 
