@@ -22,13 +22,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<activos-info info="activos"></activos-info>'
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="activos"></edi-tar>'
+              this.contenedor.innerHTML = '<editar-activos></editar-activos>'
               break;
             case "eliminar":
-              this.contenedor.innerHTML = '<eliminar-info info="activos"></eliminar-info>'
+              this.contenedor.innerHTML = '<eliminar-activos></eliminar-activos>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="activos"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-activos></agregar-activos>'
               break;
           }
         }
@@ -40,13 +40,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="marcas"></form-r>'
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="marcas"></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
               break;
             case "eliminar":
-              this.contenedor.innerHTML = '<eliminar-info info="marcas"></eliminar-info>'
+              this.contenedor.innerHTML = '<eliminar-info info ="marcas"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="marcas"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-info info="marcas"></agregar-info>'
               break;
           }
         }
@@ -58,13 +58,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<persona-info info="personas"></persona-info>'
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="personas"></edi-tar>'
+              this.contenedor.innerHTML = '<editar-persona></editar-persona>'
               break;
             case "eliminar":
-              this.contenedor.innerHTML = '<eliminar-info info="personas"></eliminar-info>'
+              this.contenedor.innerHTML = '<eliminar-personas></eliminar-personas>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="personas"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-personas></agregar-personas>'
               break;
           }
         }
@@ -76,13 +76,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="estados"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="estados"></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=estados></edi-tar> '
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="estados"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="estados"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-info info="estados"></agregar-info>'
               break;
           }
           break;
@@ -94,13 +94,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoPersonas"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="tipoPersonas"></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoPersonas"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="tipoPersonas"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-info info="tipoPersonas"></agregar-info>'
               break;
           }
           break;
@@ -112,13 +112,13 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoMovActivos"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="tipoMovActivos"></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoMovActivos"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="tipoMovActivos"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-info info="tipoMovActivos"></agregar-info>'
               break;
           }
           break;
@@ -130,13 +130,28 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoActivos"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info="tipoActivos"></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoActivos"></eliminar-info>'
               break;
             case "buscar":
-              this.contenedor.innerHTML = '<busca-dor info="tipoMovActivos"></busca-dor>'
+              this.contenedor.innerHTML = '<agregar-info info="tipoActivos"></agregar-info>'
+              break;
+          }
+          break;
+        }
+
+        case "asignaciones": {
+          switch (partes[1]) {
+            case "crear":
+              this.contenedor.innerHTML = '<crear-asignacion info="asignaciones"></crear-asignacion> ';
+              break;
+            case "asignar":
+              this.contenedor.innerHTML = '<asignar-activos></asignar-activos>'
+              break;
+            case "retornar":
+              this.contenedor.innerHTML ='<retornar-activos info="asignaciones"></retornar-activos>'
               break;
           }
           break;
@@ -144,14 +159,18 @@ class sideBar extends HTMLElement {
       }
     }
 
-    else {//no tiene guion en "mostrar"
+    else {
       switch (partes[0]) {
         case "otros":
-          this.contenedor.innerHTML = 'otros'
+          this.contenedor.innerHTML = ''
 
           break;
-        case "ajustes":
-          this.contenedor.innerHTML = 'ajustes'
+        case "contacto":
+          this.contenedor.innerHTML = ''
+          break;
+
+        case "email-Campus":
+          this.contenedor.innerHTML = ''
           break;
       }
     }
@@ -346,12 +365,13 @@ class sideBar extends HTMLElement {
           <a href="#" class="btnMostrar" mostrar="tipoActivos-buscar">Buscar</a>
         </div>
        
-        <button class="dropdown-btn">Otros
+        <button class="dropdown-btn">Asignaciones
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a href="#"  class="btnMostrar" mostrar="otros">Agregar</a>
-          <a href="#"  class="btnMostrar" mostrar="ajustes">Editar</a>
+          <a href="#"  class="btnMostrar" mostrar="asignaciones-crear">Crear</a>
+          <a href="#"  class="btnMostrar" mostrar="asignaciones-asignar">Asignar</a>
+          <a href="#"  class="btnMostrar" mostrar="asignaciones-retornar">Retornar</a>
         </div>
      
       </div>

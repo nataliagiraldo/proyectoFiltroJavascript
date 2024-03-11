@@ -1,19 +1,5 @@
 {
-  "activos": [
-    {
-      "id": "1",
-      "CodTransaccion": "CT001",
-      "NroFormulario": "100",
-      "marcaId": "1",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": "200",
-      "proveedorId": "1",
-      "nroSerial": "SN001",
-      "empresaResponsableId": "1",
-      "estadoId": "1"
-    }
-  ],
+  "activos": [],
   "historialActivos": [
     {
       "id": "1",
@@ -55,8 +41,12 @@
   ],
   "marcas": [
     {
-      "id": "1",
-      "nombre": "Marca X"
+      "nombre": "khkjbj",
+      "id": 1
+    },
+    {
+      "nombre": "hhhh",
+      "id": 2
     }
   ],
   "estados": [
