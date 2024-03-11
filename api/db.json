@@ -28,14 +28,14 @@
       "id": "1",
       "fecha": "2024-03-05",
       "activoId": "1",
-      "comentario": null,
-      "asignacionId": "1"
+      "comentario": "random",
+      "asignacionId": "2"
     },
     {
       "id": "2",
       "fecha": "2024-03-05",
       "activoId": "1",
-      "comentario": null,
+      "comentario": "hola",
       "asignacionId": "1"
     }
   ],

@@ -109,7 +109,8 @@ class RetornarActivos extends HTMLElement {
                             <h4>activoId: ${infoItem.activoId}</h4>
                             <h4>Retornar Activo</h4>
                             <form>
-                            <input type="text" value="comentario${infoItem.id}" id="comentario${infoItem.id}">
+                            <h5>Comentario</h5>
+                            <input type="text" value="${infoItem.comentario}" id="comentario${infoItem.id}">
                             <select class=" tipoPersonaId" id="infoAsignacion${infoItem.id}">
                                 <option value="${infoItem.asignacionId}" > idAsignacion ${infoItem.asignacionId}</option>
                             </select>
@@ -134,7 +135,7 @@ class RetornarActivos extends HTMLElement {
 
                             let paramName2 = "comentario";
                             let paramName3 = "asignacionId"
-                            let newInfo2 = this.querySelector(`#comentario${id}`).getAttribute("value");
+                            let newInfo2 = this.querySelector(`#comentario${id}`).value;
                             console.log("info" + newInfo2)
                             let newInfo3 = this.querySelector(`#infoAsignacion${id}`).value;
                             console.log("info" + newInfo3)
@@ -177,45 +178,34 @@ class RetornarActivos extends HTMLElement {
             let html = `
                 <p>Nombre: ${searchData.nombre}</p>
                 <p>ID: ${searchData.id}</p>
-                <h3>Asignar activo<h3>
+                
                 
             `;
             container.innerHTML += html;
-
-            // let boton = document.getElementById(`${searchData.id}`);
-            // console.log(boton);
-
-            // boton.addEventListener('click', (event) => {
-            //     event.preventDefault();
-            //     this.getData(searchData);
-            // });
-            // function crearOpciones(dicc) {
-            //     // Selecciona el elemento select
-            //     let selectElement = document.getElementById(`activoId${searchData.id}`);
-
-            //     // Crea y añade las nuevas opciones
-            //     for (let i = 0; i < dicc.length; i++) {
-            //         let option = document.createElement('option');
-            //         option.value = dicc[i].id;
-            //         option.text = dicc[i].id;
-            //         selectElement.add(option);
-            //     }
-            // }
+            function crearOpciones(dicc, infoItem) {
+                // Selecciona el elemento select
+                let selectElement = document.getElementById(`infoAsignacion${infoItem.id}`);
 
 
 
+                // Crea y añade las nuevas opciones
+                for (let i = 0; i < dicc.length; i++) {
+                    let option = document.createElement('option');
+                    option.value = dicc[i].id;
+                    option.text = dicc[i].id + ": " + dicc[i].nombre;
+                    selectElement.add(option);
+                }
+            }
+            async function cargarDatos(infoItem) {
+                try {
+                    const data = await runAsync('http://localhost:3000/personas');
+                    crearOpciones(data, infoItem);
+                } catch (error) {
+                    console.log('Error al cargar datos:', error);
+                }
+            }
 
 
-            // async function cargarDatos() {
-            //     try {
-            //         const data = await runAsync('http://localhost:3000/activos');
-            //         crearOpciones(data);
-            //     } catch (error) {
-            //         console.log('Error al cargar datos:', error);
-            //     }
-            // }
-
-            // cargarDatos();
             let detalles = 'http://localhost:3000/detalleMovimiento';
             let info = await runFiltered(detalles, searchData.id);
 
@@ -224,12 +214,49 @@ class RetornarActivos extends HTMLElement {
                 divItem2.innerHTML = `
                     <h3>Activos asignados<h3>
                     ${info.map(infoItem => `
-                        <h4>fecha: ${infoItem.fecha}</h4>
-                        <h4>activoId: ${infoItem.activoId}</h4>
-                        <h4>comentario: ${infoItem.comentario}</h4>
+                    <h4>fecha: ${infoItem.fecha}</h4>
+                    <h4>activoId: ${infoItem.activoId}</h4>
+                    <h4>Retornar Activo</h4>
+                    <form>
+                    <h5>Comentario</h5>
+                    <input type="text" value="${infoItem.comentario}" id="comentario${infoItem.id}">
+                    <select class=" tipoPersonaId" id="infoAsignacion${infoItem.id}">
+                        <option value="${infoItem.asignacionId}" > idAsignacion ${infoItem.asignacionId}</option>
+                    </select>
+                    <button type="button" id="${infoItem.id}">Enviar</button>
+
+                    
+                    </form>
                     `).join('')}
                 `;
                 container.appendChild(divItem2);
+                info.forEach(infoItem => {
+                    cargarDatos(infoItem);
+                    let boton = document.getElementById(`${infoItem.id}`);
+                    console.log("hola" + boton);
+                    boton.addEventListener('click', async (event) => {
+                        event.preventDefault();
+                        let urlreal = 'http://localhost:3000/detalleMovimiento'
+                        let id = infoItem.id;
+                        console.log(id);
+
+                        let paramName2 = "comentario";
+                        let paramName3 = "asignacionId"
+                        let newInfo2 = this.querySelector(`#comentario${id}`).value;
+                        console.log("info" + newInfo2)
+                        let newInfo3 = this.querySelector(`#infoAsignacion${id}`).value;
+                        console.log("info" + newInfo3)
+
+
+
+
+
+                        await editInfoAsync(urlreal, id, paramName2, newInfo2);
+                        await editInfoAsync(urlreal, id, paramName3, newInfo3);
+
+                    });
+
+                });
             }
         });
     }
