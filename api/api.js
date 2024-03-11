@@ -260,21 +260,57 @@ const runValuesByKeyAsync = async (endPoint, key) => {
     return await getValuesByKey(endPoint, key);
 }
 
+
+
+
 // const url = 'http://localhost:3000/asignaciones';
 // const url2 = 'http://localhost:3000/personas';
 // const valuesArray = await runValuesByKeyAsync(url, "personaId");
 
-// const datos = [];
+// const data = [];
 // for (const element of valuesArray) {
-    
-    
-//     datos.push(await getInfoAsync(url2, element));
+
+
+//     data.push(await getInfoAsync(url2, element));
 // }
 
 
+// getInfoAll('http://localhost:3000/detalleMovimiento'), aginacionId  === item.id  print si es solo 1 de resto for each
 
 
+const getInfoFilteredByState = async (endPoint, estadoId) => {
+    try {
+        const respuesta = await fetch(endPoint);
 
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+
+            // Filtrar los datos por estadoId
+            const datosFiltrados = datos.filter(item => item.asignacionId === estadoId);
+
+            // viewDataHtml(datosFiltrados); // Puedes hacer lo que necesites con los datos filtrados
+            console.log(datosFiltrados);
+
+            return datosFiltrados;
+        } else if (respuesta.status === 401) {
+            console.log('La URL no es correcta');
+        } else if (respuesta.status === 404) {
+            console.log('El producto que buscas no existe');
+        } else {
+            console.log('Se presentó un error en la petición. Consulte al administrador');
+        }
+    } catch (error) {
+        console.log('Error en la petición:', error);
+    }
+}
+
+
+const runFiltered = async (endPoint, estadoId) => {
+    return await getInfoFilteredByState(endPoint, estadoId);
+}
+
+// runFiltered(detalles, itemId) toma el endpoint y verifica que el id de asignacion sea igual que el item id Falta exportar hacer select
+let link = 'http://localhost:3000/detalleMovimiento'
 
 
 
@@ -290,6 +326,7 @@ export {
     editInfoAsync,
     deleteInfoAsync,
     runFilteredAsync,
-    runValuesByKeyAsync
+    runValuesByKeyAsync, 
+    runFiltered
     
 }

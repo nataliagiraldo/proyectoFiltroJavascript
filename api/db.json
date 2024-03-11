@@ -60,6 +60,11 @@
       "id": "1",
       "fecha": "2002-07-25",
       "personaId": "1"
+    },
+    {
+      "id": "2",
+      "fecha": "2002-07-25",
+      "personaId": "2"
     }
   ],
   "personas": [

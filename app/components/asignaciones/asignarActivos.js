@@ -1,6 +1,6 @@
-import { runValuesByKeyAsync, getInfoAsync, agregar } from '/api/api.js';
+import { runValuesByKeyAsync, getInfoAsync, agregar, runFiltered } from '/api/api.js';
 
-// getInfoAsync(endPoint, targetId);
+// runFiltered(detalles, itemId) toma el endpoint y verifica que el id de asignacion sea igual que el item id Falta exportar hacer select 
 
 class asignarActivos extends HTMLElement {
     constructor() {
@@ -13,7 +13,7 @@ class asignarActivos extends HTMLElement {
         const fecha = document.getElementById(`fecha${item.id}`).value;
         const activoId = document.getElementById(`activoId${item.id}`).value;
         const comentario = document.getElementById(`comentario${item.id}`).value;
-        const id =  item.id;
+        const id = item.id;
 
         const data = {
             "fecha": fecha,
@@ -72,7 +72,7 @@ class asignarActivos extends HTMLElement {
             form.appendChild(button);
             container.appendChild(form);
 
-            items.forEach(item => {
+            items.forEach(async item => {
 
                 const divItem = document.createElement('div');
 
@@ -100,13 +100,34 @@ class asignarActivos extends HTMLElement {
 
                 let boton = document.getElementById(`${item.id}`);
                 console.log(boton);
-
-
-
                 boton.addEventListener('click', (event) => {
                     event.preventDefault();
                     this.getData(item);
                 });
+
+                let detalles = 'http://localhost:3000/detalleMovimiento'
+
+                let info = await runFiltered(detalles, item.id)
+
+                info.forEach(async item => {
+                    const divItem2 = document.createElement('div');
+
+                    divItem2.innerHTML = /*html*/ `
+                
+                    <h3>Activos asignados<h3>
+                    <h4>fecha: ${item.fecha}</h4>
+                    <h4>activoId: ${item.activoId}</h4>
+                    <h4>comentario: ${item.comentario}</h4>
+                    
+                    
+                    
+                    `;
+
+                    container.appendChild(divItem2);
+
+                });
+
+
 
 
 
@@ -125,15 +146,15 @@ class asignarActivos extends HTMLElement {
             let searchValue = document.getElementById('searchInput').value;
 
             function buscar(asignaciones, idABuscar) {
-                
+
                 for (let i = 0; i < asignaciones.length; i++) {
-                  if (asignaciones[i].id === idABuscar) {
-                    return asignaciones[i];
-                  }
+                    if (asignaciones[i].id === idABuscar) {
+                        return asignaciones[i];
+                    }
                 }
-                
+
                 return null;
-              }
+            }
 
             let searchData = await buscar(data, searchValue)
             // getInfoAsync(url, searchValue);
