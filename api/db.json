@@ -1,5 +1,32 @@
 {
-  "activos": [],
+  "activos": [
+    {
+      "id": "1",
+      "CodTransaccion": "asd",
+      "NroFormulario": "asd",
+      "marcaId": "1",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": "ds",
+      "proveedorId": "1",
+      "nroSerial": "dsf",
+      "empresaResponsableId": "dsf",
+      "estadoId": "2"
+    },
+    {
+      "id": "2",
+      "CodTransaccion": "sdfds",
+      "NroFormulario": "df",
+      "marcaId": "2",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": "dsf",
+      "proveedorId": "1",
+      "nroSerial": "dsf",
+      "empresaResponsableId": "dfsf",
+      "estadoId": "2"
+    }
+  ],
   "historialActivos": [
     {
       "id": "1",
