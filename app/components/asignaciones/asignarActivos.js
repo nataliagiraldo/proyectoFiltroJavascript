@@ -1,4 +1,4 @@
-import { runValuesByKeyAsync, getInfoAsync, agregar, runFiltered } from '/api/api.js';
+import { runValuesByKeyAsync, getInfoAsync, agregar, runFiltered, runAsync } from '/api/api.js';
 
 class AsignarActivos extends HTMLElement {
     constructor() {
@@ -68,12 +68,18 @@ class AsignarActivos extends HTMLElement {
                 const divItem = document.createElement('div');
                 divItem.innerHTML = `
                     <p>Nombre: ${item.nombre}</p>
+                    <p>ID: ${item.id}</p>
                     <h3>Asignar activo<h3>
                     <form action="#">
                         <label for="fecha">Fecha:</label>
                         <input type="date" id="fecha${item.id}" name="fecha" value="2024-03-05" required><br>
                         <label for="activoId">Activo ID:</label>
-                        <input type="text" id="activoId${item.id}" name="activoId" value="Select" required><br>
+                        <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId${item.id}">
+                        <option value="" >Activo id</option>
+
+       
+                         </select>
+                        <br>
                         <label for="comentario">Comentario:</label>
                         <input type="text" id="comentario${item.id}" name="comentario" value="" required><br>
                         <button id="${item.id}" type="button">Enviar</button>
@@ -88,6 +94,33 @@ class AsignarActivos extends HTMLElement {
                     event.preventDefault();
                     this.getData(item);
                 });
+                function crearOpciones(dicc) {
+                    // Selecciona el elemento select
+                    let selectElement = document.getElementById(`activoId${item.id}`);
+
+                    // Crea y añade las nuevas opciones
+                    for (let i = 0; i < dicc.length; i++) {
+                        let option = document.createElement('option');
+                        option.value = dicc[i].id;
+                        option.text = dicc[i].id ;
+                        selectElement.add(option);
+                    }
+                }
+
+
+
+
+
+                async function cargarDatos() {
+                    try {
+                        const data = await runAsync('http://localhost:3000/activos');
+                        crearOpciones(data);
+                    } catch (error) {
+                        console.log('Error al cargar datos:', error);
+                    }
+                }
+
+                cargarDatos();
 
                 if (info.length > 0) {
                     const divItem2 = document.createElement('div');
@@ -120,12 +153,16 @@ class AsignarActivos extends HTMLElement {
 
             let html = `
                 <p>Nombre: ${searchData.nombre}</p>
+                <p>ID: ${searchData.id}</p>
                 <h3>Asignar activo<h3>
                 <form action="#">
                     <label for="fecha">Fecha:</label>
                     <input type="date" id="fecha${searchData.id}" name="fecha" value="2024-03-05" required><br>
-                    <label for="activoId">Activo ID:</label>
-                    <input type="text" id="activoId${searchData.id}" name="activoId" value="Select" required><br>
+                    <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId${searchData.id}">
+                        <option value="" >Activo id</option>
+
+       
+                         </select>
                     <label for="comentario">Comentario:</label>
                     <input type="text" id="comentario${searchData.id}" name="comentario" value="" required><br>
                     <button id="${searchData.id}" type="button">Enviar</button>
@@ -140,6 +177,33 @@ class AsignarActivos extends HTMLElement {
                 event.preventDefault();
                 this.getData(searchData);
             });
+            function crearOpciones(dicc) {
+                // Selecciona el elemento select
+                let selectElement = document.getElementById(`activoId${searchData.id}`);
+
+                // Crea y añade las nuevas opciones
+                for (let i = 0; i < dicc.length; i++) {
+                    let option = document.createElement('option');
+                    option.value = dicc[i].id;
+                    option.text = dicc[i].id ;
+                    selectElement.add(option);
+                }
+            }
+
+
+
+
+
+            async function cargarDatos() {
+                try {
+                    const data = await runAsync('http://localhost:3000/activos');
+                    crearOpciones(data);
+                } catch (error) {
+                    console.log('Error al cargar datos:', error);
+                }
+            }
+
+            cargarDatos();
             let detalles = 'http://localhost:3000/detalleMovimiento';
             let info = await runFiltered(detalles, searchData.id);
 

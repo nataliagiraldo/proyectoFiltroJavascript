@@ -30,6 +30,20 @@
       "activoId": "1",
       "comentario": "Asignado a Juan Perez",
       "asignacionId": "1"
+    },
+    {
+      "fecha": "2024-03-06",
+      "activoId": "Select",
+      "comentario": "lo que sea",
+      "asignacionId": "1",
+      "id": "NP4wz1u"
+    },
+    {
+      "fecha": "2024-03-05",
+      "activoId": "1",
+      "comentario": "idk",
+      "asignacionId": "2",
+      "id": "X01IqT3"
     }
   ],
   "proveedores": [
