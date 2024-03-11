@@ -1,20 +1,7 @@
 {
   "activos": [
     {
-      "id": "2",
-      "CodTransaccion": "hola",
-      "NroFormulario": "9",
-      "marcaId": "1",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": "19",
-      "proveedorId": "1",
-      "nroSerial": "19",
-      "empresaResponsableId": "1009",
-      "estadoId": "2"
-    },
-    {
-      "id": "3",
+      "id": "1",
       "CodTransaccion": "CT001",
       "NroFormulario": 100,
       "marcaId": "1",
@@ -25,32 +12,24 @@
       "nroSerial": "SN001",
       "empresaResponsableId": "1",
       "estadoId": "1"
-    },
+    }
+  ],
+  "historialActivos": [
     {
-      "id": "4",
-      "CodTransaccion": "CT001",
-      "NroFormulario": 100,
-      "marcaId": "1",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": 500,
-      "proveedorId": "1",
-      "nroSerial": "SN001",
-      "empresaResponsableId": "1",
-      "estadoId": "1"
-    },
-    {
-      "id": "5",
-      "CodTransaccion": "CT001",
-      "NroFormulario": 100,
-      "marcaId": "1",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": 500,
-      "proveedorId": "1",
-      "nroSerial": "SN001",
-      "empresaResponsableId": "1",
+      "id": "1",
+      "activoId": "1",
+      "fecha": "2024-03-05",
+      "responsableId": "1",
       "estadoId": "2"
+    }
+  ],
+  "detalleMovimiento": [
+    {
+      "id": "1",
+      "fecha": "2024-03-05",
+      "activoId": "1",
+      "comentario": "Asignado a Juan Perez",
+      "asignacionId": "1"
     }
   ],
   "proveedores": [
@@ -63,41 +42,44 @@
   "marcas": [
     {
       "id": "1",
-      "nombre": "4"
+      "nombre": "Marca X"
     }
   ],
   "estados": [
     {
       "id": "1",
-      "nombre": "Dado de baja"
+      "nombre": "En stock"
     },
     {
       "id": "2",
       "nombre": "En uso"
     }
   ],
+  "asignaciones": [
+    {
+      "id": "1",
+      "fecha": "2002-07-25",
+      "personaId": "1"
+    }
+  ],
   "personas": [
     {
       "id": "1",
+      "nombre": "Juan Perez",
+      "email": "juanperez@example.com",
+      "tipoPersonaId": "1"
+    },
+    {
+      "id": "2",
       "nombre": "natalia",
-      "email": "ok1",
-      "tipoPersonaId": "1",
-      "asignaciones": [
-        {
-          "id": "1",
-          "fecha": "2002-07-25",
-          "personaId": "1",
-          "detalleMovimiento": [
-            {
-              "id": "1",
-              "fecha": "2024-03-05",
-              "activoId": "1",
-              "comentario": "Asignado a Juan Perez",
-              "asignacionId": "1"
-            }
-          ]
-        }
-      ]
+      "email": "juanperez@example.com",
+      "tipoPersonaId": "1"
+    },
+    {
+      "id": "3",
+      "nombre": "el",
+      "email": "juanperez@example.com",
+      "tipoPersonaId": "1"
     }
   ],
   "categoriaActivos": [

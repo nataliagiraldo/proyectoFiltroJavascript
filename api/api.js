@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/personas';
+
 const id = "1";
 const newId = "natalia"
 const paramName = "nombre"
@@ -230,72 +230,46 @@ const runFilteredAsync = async (endPoint, estadoId) => {
 
 // runFilteredAsync(url, "1")
 
-const editOrAddInfo = async (endPoint, targetId, paramName, paramValue) => {
+const getValuesByKey = async (endPoint, key) => {
     try {
-        // Obtener la información actual
-        const response = await fetch(`${endPoint}`);
+        const response = await fetch(endPoint);
 
         if (response.status === 200) {
             const data = await response.json();
 
-            // Buscar el objeto con el ID específico
-            const targetObject = data.find(item => item.id === targetId);
+            // Obtener todos los valores de la llave específica
+            const values = data.map(item => item[key]);
 
-            if (targetObject) {
-                // Si se encuentra el objeto, verificar y actualizar el parámetro específico
-                if (!targetObject[paramName]) {
-                    // Si el campo no existe, crear un nuevo array que contenga el valor ingresado
-                    targetObject[paramName] = [paramValue];
-                } else {
-                    // Si el campo ya existe, agregar el nuevo valor al array
-                    targetObject[paramName].push(paramValue);
-                }
+            // viewDataHtml(values); // Puedes hacer lo que necesites con los valores obtenidos
+            console.log(values);
 
-                // Realizar la solicitud de actualización
-                const updateResponse = await fetch(`${endPoint}/${targetId}`, {
-                    method: 'PUT',
-                    headers: myHeaders,
-                    body: JSON.stringify(targetObject)
-                });
-
-                if (updateResponse.status === 200) {
-                    console.log('Objeto actualizado con éxito:', targetObject);
-                    return targetObject;
-                } else {
-                    console.log('Error al intentar actualizar el objeto. Consulte al Administrador');
-                }
-            } else {
-                // Si no se encuentra el objeto
-                console.log('El producto con el ID especificado no existe');
-            }
+            return values;
         } else if (response.status === 401) {
             console.log('La URL no es correcta');
         } else if (response.status === 404) {
             console.log('El producto que buscas no existe');
         } else {
-            console.log('Se presentó un error en la petición. Consulte al Administrador');
+            console.log('Se presentó un error en la petición. Consulte al administrador');
         }
     } catch (error) {
-        console.log(error);
+        console.log('Error en la petición:', error);
     }
 }
 
-const editOrAddInfoAsync = async (endPoint, targetId, paramName, paramValue) => {
-    const updatedObject = await editOrAddInfo(endPoint, targetId, paramName, paramValue);
-    return updatedObject;
+const runValuesByKeyAsync = async (endPoint, key) => {
+    return await getValuesByKey(endPoint, key);
 }
 
+// const url = 'http://localhost:3000/asignaciones';
+// const url2 = 'http://localhost:3000/personas';
+// const valuesArray = await runValuesByKeyAsync(url, "personaId");
 
-
-
-// let paramNam = "asignacion"
-// let x = {
-//     "id": "1",
-//     "nombre": "Computadoras"
+// const datos = [];
+// for (const element of valuesArray) {
+    
+    
+//     datos.push(await getInfoAsync(url2, element));
 // }
-
-// editOrAddInfoAsync(url, id, paramNam, x)
-
 
 
 
@@ -316,5 +290,6 @@ export {
     editInfoAsync,
     deleteInfoAsync,
     runFilteredAsync,
-    editOrAddInfoAsync
+    runValuesByKeyAsync
+    
 }

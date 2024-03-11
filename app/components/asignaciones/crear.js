@@ -1,7 +1,5 @@
-
+import { agregar } from '/api/api.js';
 import { runAsync } from '/api/api.js';
-import {editOrAddInfoAsync} from '/api/api.js';
-
 
 class crearAsignacion extends HTMLElement {
 
@@ -208,38 +206,13 @@ class crearAsignacion extends HTMLElement {
         <div class="container">
         
         <form class="form" action="">
-            <div class="input-field">
-            <input
-            required=""
-            autocomplete="off"
-            type="text"
-            name="id"
-            id="id"
-            class="email"
-            />
-            
-        </div>
+        <h2 class="formatoH2">Crear asignacion</h2>
 
-         
-          
-          <div class="input-field">
-            <input
-              required=""
-              autocomplete="off"
-              type="date"
-              name="fecha"
-              id="fecha"
-              class="email"
-            />
-            
-          </div>
-
-
-          <select for="idResponsable" class=" tipoPersonaId" id="idResponsable">
-          <option value="" >idResponsable</option>
+        <select for="idResponsable" class=" tipoPersonaId" id="idResponsable">
+            <option value="" >idResponsable</option>
 
        
-          </select>
+        </select>
       
           <div class="btn-container">
             <input class="btn" type="submit" value="Agregar" id="enviar">
@@ -287,23 +260,20 @@ class crearAsignacion extends HTMLElement {
 
     }
 
-
-
-
     async getData() {
-        const url = `http://localhost:3000/personas`;
-        const id = document.getElementById('id').value;
+        const url = `http://localhost:3000/asignaciones`;
+        const fecha = new Date().toISOString();
         const responsable = document.getElementById('idResponsable').value;
-        const fecha = document.getElementById('fecha').value;
+
 
         const data = {
-            "id": id,
-            "personaId": responsable,
-            "fecha": fecha
+            "fecha": fecha,
+            "personaId": responsable
+
         };
 
         console.log(data);
-        editOrAddInfoAsync(url, responsable, "asignaciones", data)
+        agregar(data, url);
     }
 
 }
