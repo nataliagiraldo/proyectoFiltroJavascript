@@ -139,7 +139,7 @@ class AsignarActivos extends HTMLElement {
                     <label for="fecha">Fecha:</label>
                     <input type="date" id="fecha" name="fecha" value="2024-03-05" required><br>
                     
-                    <label for="activoId" id="activoId">Activo ID:</label>
+                    <label for="activoId" >Activo ID:</label>
                     <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId">
                     
                         <option value="" >Activo id</option>

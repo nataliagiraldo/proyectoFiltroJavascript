@@ -21,6 +21,12 @@
       "comentario": "",
       "asignacionId": "",
       "id": "pPN4J85"
+    },
+    {
+      "fecha": "2024-03-05",
+      "comentario": "lo que sea",
+      "asignacionId": "2",
+      "id": "93llUfE"
     }
   ],
   "proveedores": [
@@ -32,12 +38,8 @@
   ],
   "marcas": [
     {
-      "nombre": "hhhh",
+      "nombre": "chanel",
       "id": 2
-    },
-    {
-      "nombre": "aaaaaaaaa",
-      "id": 3
     }
   ],
   "estados": [
