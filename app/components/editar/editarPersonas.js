@@ -30,10 +30,29 @@ class EditarPersona extends HTMLElement {
             input.id = 'searchInput';
             input.name = 'searchInput';
             input.placeholder = 'Escribe tu búsqueda';
+            input.style.marginTop = '30px';
+            input.style.padding = '8px';
+            input.style.marginRight = '8px';
+            input.style.border = '1px solid #ccc';
+            input.style.borderRadius = '5px';
 
             const button = document.createElement('button');
             button.type = 'submit';
             button.textContent = 'Buscar';
+            button.style.padding = '8px 16px';
+            button.style.border = '1px solid #007bff';
+            button.style.borderRadius = '5px';
+            button.style.backgroundColor = '#007bff';
+            button.style.color = '#fff';
+
+            // Estilos para el contenedor container
+            container.classList.add('scroll');
+            container.style.display = 'flex';
+            container.style.flexDirection = 'column';
+            container.style.alignItems = 'center';
+            container.style.borderRadius = '20px';
+            container.style.gap = '30px'
+            container.style.backgroundColor = 'darkblue';
 
             form.appendChild(input);
             form.appendChild(button);
@@ -45,20 +64,213 @@ class EditarPersona extends HTMLElement {
 
                     formItem.innerHTML = /*html*/ `
                         
-                       
-                        <p>Nombre: </p>
-                        <input id="nombre${item.id}" type="text" value="${item.nombre}">
-                        <p>Email: </p>
-                        <input id="email${item.id}" type="text" value="${item.email}">
-                        <p>Id: ${item.id} </p>
-                        <p>Tipo de persona:</p> 
-                        <select for="${item.tipoPersonaId}" class=" tipoPersonaId" id="tipoPersona${item.id}">
-                            
-                            <option value="${item.tipoPersonaId}" >${item.tipoPersonaId}</option>
-                        </select>
+                    <style>
 
-                        <button id="button${item.id}" type="button">enviar</button>
-                    `;
+
+                    .scroll {
+                        overflow-y: auto; 
+                    }
+    
+                    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+                   
+    
+                    .container {
+                        gap: 30px;
+                        background: none;
+                        flex-direction: column;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
+                        width: 40vw;
+                        }
+    
+                        .container h2{
+                            font-size: 40px;
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            color: white;
+                    }
+    
+                        .input-field input[type="text"]{
+                            width: 15vw; 
+                            height: 3vh; 
+                        }
+                        
+                        .container .heading {
+                            font-size: 1.3rem;
+                            margin-bottom: 20px;
+                            font-weight: bolder;
+                        }
+                        
+                    
+                        .container .btn-container {
+                            width: 100%;
+                            height: 10vh;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 20px;
+                        }
+                        
+                        .container .btn {
+                            padding: 5px 20px;
+                            font-size: 1rem;
+                            text-transform: uppercase;
+                            letter-spacing: 3px;
+                            border-radius: 10px;
+                            border: solid 1px #1034aa;
+                            border-bottom: solid 1px #90c2ff;
+                            background: linear-gradient(135deg, #0034de, #006eff);;
+                            color: #fff;
+                            font-weight: bolder;
+                            width: 50%;
+                            height: 5vh;
+                            transition: all 0.2s ease;
+                            box-shadow: 0px 2px 3px #000d3848, inset 0px 4px 5px #0070f0,
+                                inset 0px -4px 5px #002cbb;
+                        }
+                        
+                        .container .btn:active {
+                            box-shadow: inset 0px 4px 5px #0070f0, inset 0px -4px 5px #002cbb;
+                            transform: scale(0.995);
+                        }
+                        
+                        .input-field {
+                            display: flex;
+                            justify-content: center;
+                            position: relative;
+                        }
+                        
+                        .input-field label {
+                            position: absolute;
+                            color: #000000;
+                            pointer-events: none;
+                            background-color: transparent;
+                            left: 15px;
+                            transform: translateY(0.6rem);
+                            transition: all 0.3s ease;
+                        }
+                        
+                        .input-field input {
+                            padding: 10px 15px;
+                            font-size: 1rem;
+                            border-radius: 8px;
+                            border: solid 1px #8d8d8d;
+                            letter-spacing: 1px;
+                            width: 100%;
+                        }
+                        
+                        .input-field input:focus,
+                        .input-field input:valid {
+                            outline: none;
+                            border: solid 1px #0034de;
+                        }
+                        
+                        .input-field input:focus ~ label,
+                        .input-field input:valid ~ label {
+                            transform: translateY(-51%) translateX(-10px) scale(0.8);
+                            background-color: #fff;
+                            padding: 0px 5px;
+                            color: #0034de;
+                            font-weight: bold;
+                            letter-spacing: 1px;
+                            border: none;
+                            border-radius: 100px;
+                        }
+                        
+                        .container .passicon {
+                            cursor: pointer;
+                            font-size: 1.3rem;
+                            position: absolute;
+                            top: 6px;
+                            right: 8px;
+                        }
+                        
+                        .container .close {
+                            display: none;
+                        }
+                        
+                        .tipoPersonaId{
+                            font-size: 1rem;
+                        }
+    
+                        select{
+                            border-radius: 10px;
+                            width: 17vw;
+                            height: 4vh; 
+                        }
+    
+                        @media(max-width: 760px){
+    
+                            .container {
+                                width: 90%;
+                                height: 90vh;
+                            }
+    
+                            .input-field input[type="text"],
+                            .input-field select {
+                                width: 90%;
+                            }
+                            
+                            .container {
+                                width: 90%;
+                                height: 100%;
+                            }
+    
+                            
+                            .container .btn {
+                                width: 50%;
+                                height: 5vh;
+                            }
+                        }
+                    </style>
+    
+                    <div class="container">
+                        <form class="form">
+                            <h2 class="formatoH2">Editar</h2>
+    
+                            <h2>Id:${item.id} </h2>
+    
+                            <div class="input-field">
+                                <input
+                                required=""
+                                autocomplete="off"
+                                type="text"
+                                name="nombre"
+                                id="nombre${item.id}"
+                                class="nombre"
+                                value="${item.nombre}"
+                                />
+                                <label for="nombre">Nombre:</label>
+                            </div>
+                            
+                            <div class="input-field">
+                                <input
+                                required=""
+                                autocomplete="off"
+                                type="text"
+                                name="email"
+                                id="email${item.id}"
+                                class="email"
+                                value="${item.email}"
+                                />
+                                <label for="email">email</label>
+                            </div>
+            
+    
+                            <select for="marcaId${item.tipoPersonaId}"  class="tipoPersonaId" id="marcaId${item.tipoPersonaId}">
+                                <option value="" > Tipo de persona: </option>
+                                <option value="${item.tipoPersonaId}" >${item.tipoPersonaId}</option>
+                            </select>
+    
+                        
+                            <div class="btn-container">
+                                <button class="btn" id="button${item.id}" type="button">enviar</button>
+                            </div>
+                        </form>
+                    </div>`;
 
                     container.appendChild(formItem);
                     function crearOpciones(dicc) {
@@ -119,27 +331,236 @@ class EditarPersona extends HTMLElement {
             let searchData = await getInfoAsync(url, searchValue);
 
             container.innerHTML = /*html*/ `
-                <form id="searchForm" action="">
-                    <input type="text" id="searchInput" name="searchInput" placeholder="Escribe tu búsqueda">
-                    <button type="submit">Buscar</button>
-                </form>
             `;
 
             if ('nombre' in searchData) {
                 let html = /*html*/ `
-                    <form>
-                    <p>Nombre: </p>
-                    <input id="nombre${searchData.id}" type="text" value="${searchData.nombre}">
-                    <p>Email: </p>
-                    <input id="email${searchData.id}" type="text" value="${searchData.email}">
-                    <p>Id: ${searchData.id} </p>
-                    <p>Tipo de persona:</p> 
-                    <select for="${searchData.tipoPersonaId}" class=" tipoPersonaId" id="tipoPersona${searchData.id}">
-                        <option value="${searchData.tipoPersonaId}" >${searchData.tipoPersonaId}</option>
-                    </select>
-                    <button id="button${searchData.id}" type="button">enviar</button>
+
+                <style>
+
+
+                .scroll {
+                    overflow-y: auto; 
+                }
+
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+               
+
+                .container {
+                    gap: 30px;
+                    background: none;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px;
+                    width: 40vw;
+                    }
+
+                    .form{
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap:30px
+                    }
+
+                    p {
+                        color: white;
+                        font-size: 20px;
+                    }
+
+                    .container h2{
+                        font-size: 40px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        color: white;
+                }
+
+                    .input-field input[type="text"]{
+                        width: 15vw; 
+                        height: 3vh; 
+                    }
                     
-                    </form>`;
+                    .container .heading {
+                        font-size: 1.3rem;
+                        margin-bottom: 20px;
+                        font-weight: bolder;
+                    }
+                    
+                
+                    .container .btn-container {
+                        width: 100%;
+                        height: 10vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 20px;
+                    }
+                    
+                    .container .btn {
+                        padding: 5px 20px;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                        border-radius: 10px;
+                        border: solid 1px #1034aa;
+                        border-bottom: solid 1px #90c2ff;
+                        background: linear-gradient(135deg, #0034de, #006eff);;
+                        color: #fff;
+                        font-weight: bolder;
+                        width: 50%;
+                        height: 5vh;
+                        transition: all 0.2s ease;
+                        box-shadow: 0px 2px 3px #000d3848, inset 0px 4px 5px #0070f0,
+                            inset 0px -4px 5px #002cbb;
+                    }
+                    
+                    .container .btn:active {
+                        box-shadow: inset 0px 4px 5px #0070f0, inset 0px -4px 5px #002cbb;
+                        transform: scale(0.995);
+                    }
+                    
+                    .input-field {
+                        display: flex;
+                        justify-content: center;
+                        position: relative;
+                    }
+                    
+                    .input-field label {
+                        position: absolute;
+                        color: #000000;
+                        pointer-events: none;
+                        background-color: transparent;
+                        left: 15px;
+                        transform: translateY(0.6rem);
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .input-field input {
+                        padding: 10px 15px;
+                        font-size: 1rem;
+                        border-radius: 8px;
+                        border: solid 1px #8d8d8d;
+                        letter-spacing: 1px;
+                        width: 100%;
+                    }
+                    
+                    .input-field input:focus,
+                    .input-field input:valid {
+                        outline: none;
+                        border: solid 1px #0034de;
+                    }
+                    
+                    .input-field input:focus ~ label,
+                    .input-field input:valid ~ label {
+                        transform: translateY(-51%) translateX(-10px) scale(0.8);
+                        background-color: #fff;
+                        padding: 0px 5px;
+                        color: #0034de;
+                        font-weight: bold;
+                        letter-spacing: 1px;
+                        border: none;
+                        border-radius: 100px;
+                    }
+                    
+                    .container .passicon {
+                        cursor: pointer;
+                        font-size: 1.3rem;
+                        position: absolute;
+                        top: 6px;
+                        right: 8px;
+                    }
+                    
+                    .container .close {
+                        display: none;
+                    }
+                    
+                    .tipoPersonaId{
+                        font-size: 1rem;
+                    }
+
+                    select{
+                        border-radius: 10px;
+                        width: 17vw;
+                        height: 4vh; 
+                    }
+
+                    @media(max-width: 760px){
+
+                        .container {
+                            width: 90%;
+                            height: 90vh;
+                        }
+
+                        .input-field input[type="text"],
+                        .input-field select {
+                            width: 90%;
+                        }
+                        
+                        .container {
+                            width: 90%;
+                            height: 100%;
+                        }
+
+                        
+                        .container .btn {
+                            width: 50%;
+                            height: 5vh;
+                        }
+                    }
+                </style>
+
+
+
+                <div class="container">
+                    <form class="form">
+                        <h2 class="formatoH2">Editar</h2>
+
+                        <h2>Id:${searchData.id} </h2>
+
+                        <div class="input-field">
+                            <input
+                            required=""
+                            autocomplete="off"
+                            type="text"
+                            name="nombre"
+                            id="nombre${searchData.id}"
+                            class="nombre"
+                            value="${searchData.nombre}"
+                            />
+                            <label for="nombre">Nombre:</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input
+                            required=""
+                            autocomplete="off"
+                            type="text"
+                            name="email"
+                            id="email${searchData.id}"
+                            class="email"
+                            value="${searchData.email}"
+                            />
+                            <label for="email">email</label>
+                        </div>
+
+                        <p>Tipo de persona:</p> 
+                        <select for="${searchData.tipoPersonaId}"  class="tipoPersonaId" id="tipoPersona${searchData.id}">
+                            <option value="${searchData.tipoPersonaId}" >${searchData.tipoPersonaId}</option>
+                        </select>
+
+
+                        <div class="btn-container">
+                            <button class="btn" id="button${searchData.id}" type="button">enviar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                
+                   `;
                 container.innerHTML += html;
                 function crearOpciones(dicc) {
                     // Selecciona el elemento select

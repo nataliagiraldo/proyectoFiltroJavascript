@@ -2,7 +2,7 @@
   "activos": [
     {
       "id": "1",
-      "CodTransaccion": "asd",
+      "CodTransaccion": "ggggggg",
       "NroFormulario": "asd",
       "marcaId": "1",
       "categoriaActivoId": "1",
@@ -10,7 +10,7 @@
       "valorUnitario": "ds",
       "proveedorId": "1",
       "nroSerial": "dsf",
-      "empresaResponsableId": "dsf",
+      "empresaResponsableId": "undefined",
       "estadoId": "2"
     },
     {
@@ -68,7 +68,7 @@
   ],
   "marcas": [
     {
-      "nombre": "khkjbj",
+      "nombre": "lenovo",
       "id": 1
     },
     {
@@ -79,7 +79,7 @@
   "estados": [
     {
       "id": "1",
-      "nombre": "En stock"
+      "nombre": "jnnnnnnnnnnnnknflkdndf"
     },
     {
       "id": "2",
@@ -101,7 +101,7 @@
   "personas": [
     {
       "id": "1",
-      "nombre": "Juan Perez",
+      "nombre": "Juan guerrero",
       "email": "juanperez@example.com",
       "tipoPersonaId": "1"
     },
@@ -137,7 +137,7 @@
   "tipoMovActivos": [
     {
       "id": "1",
-      "nombre": "Compra"
+      "nombre": "venta"
     },
     {
       "id": "2",

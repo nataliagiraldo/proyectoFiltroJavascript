@@ -94,7 +94,7 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoPersonas"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=tipoPersonas></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoPersonas"></eliminar-info>'
@@ -112,7 +112,7 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoMovActivos"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=tipoMovActivos></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoMovActivos"></eliminar-info>'
@@ -130,7 +130,7 @@ class sideBar extends HTMLElement {
               this.contenedor.innerHTML = '<form-r info="tipoActivos"></form-r>';
               break;
             case "editar":
-              this.contenedor.innerHTML = '<edi-tar info=marcas></edi-tar>'
+              this.contenedor.innerHTML = '<edi-tar info=tipoActivos></edi-tar>'
               break;
             case "eliminar":
               this.contenedor.innerHTML = '<eliminar-info info="tipoActivos"></eliminar-info>'

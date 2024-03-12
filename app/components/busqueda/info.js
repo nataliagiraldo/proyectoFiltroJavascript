@@ -29,7 +29,6 @@ class AgregarInfo extends HTMLElement {
             input.id = 'searchInput';
             input.name = 'searchInput';
             input.placeholder = 'Escribe tu búsqueda';
-            input.placeholder = 'Escribe tu búsqueda';
             input.style.marginTop = '30px';
             input.style.padding = '8px';
             input.style.marginRight = '8px';
@@ -162,7 +161,7 @@ class AgregarInfo extends HTMLElement {
 
                 <style>
 
-                .botonSalir{
+                button .botonSalir{
                     marginTop: 10px
                     background: red;
 
