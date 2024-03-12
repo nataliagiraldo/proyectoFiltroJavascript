@@ -25,6 +25,19 @@
       "nroSerial": "dsf",
       "empresaResponsableId": "dfsf",
       "estadoId": "2"
+    },
+    {
+      "id": "eeeeeee",
+      "CodTransaccion": "ffff",
+      "NroFormulario": "ffff",
+      "marcaId": "2",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": "ffff",
+      "proveedorId": "1",
+      "nroSerial": "fff",
+      "empresaResponsableId": "ff",
+      "estadoId": "2"
     }
   ],
   "historialActivos": [
@@ -78,20 +91,11 @@
   ],
   "estados": [
     {
-      "id": "1",
-      "nombre": "jnnnnnnnnnnnnknflkdndf"
-    },
-    {
       "id": "2",
       "nombre": "En uso"
     }
   ],
   "asignaciones": [
-    {
-      "id": "1",
-      "fecha": "2002-07-25",
-      "personaId": "1"
-    },
     {
       "id": "2",
       "fecha": "2002-07-25",
@@ -99,12 +103,6 @@
     }
   ],
   "personas": [
-    {
-      "id": "1",
-      "nombre": "Juan guerrero",
-      "email": "juanperez@example.com",
-      "tipoPersonaId": "1"
-    },
     {
       "id": "2",
       "nombre": "natalia",
@@ -144,14 +142,7 @@
       "nombre": "Asignación"
     }
   ],
-  "telefonoPersonas": [
-    {
-      "id": "1",
-      "nro": "123456789",
-      "ubicacion": "Oficina",
-      "personaId": "1"
-    }
-  ],
+  "telefonoPersonas": [],
   "tipoActivos": [
     {
       "id": "1",

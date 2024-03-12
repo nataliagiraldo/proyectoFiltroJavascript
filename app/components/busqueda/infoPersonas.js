@@ -55,6 +55,7 @@ class AgregarInfoPersonas extends HTMLElement {
             container.style.borderRadius = '20px';
             container.style.gap = '30px'
             container.style.backgroundColor = 'darkblue';
+            
             form.appendChild(input);
             form.appendChild(button);
             container.appendChild(form);
