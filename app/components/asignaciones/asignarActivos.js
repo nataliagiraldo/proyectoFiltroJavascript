@@ -54,10 +54,30 @@ class AsignarActivos extends HTMLElement {
             input.id = 'searchInput';
             input.name = 'searchInput';
             input.placeholder = 'Escribe tu búsqueda';
+            input.style.marginTop = '30px';
+            input.style.padding = '8px';
+            input.style.marginRight = '8px';
+            input.style.border = '1px solid #ccc';
+            input.style.borderRadius = '5px';
 
             const button = document.createElement('button');
             button.type = 'submit';
             button.textContent = 'Buscar';
+            button.style.padding = '8px 16px';
+            button.style.border = '1px solid #007bff';
+            button.style.borderRadius = '5px';
+            button.style.backgroundColor = '#007bff';
+            button.style.color = '#fff';
+
+
+            // Estilos para el contenedor container
+            container.classList.add('scroll');
+            container.style.display = 'flex';
+            container.style.flexDirection = 'column';
+            container.style.alignItems = 'center';
+            container.style.borderRadius = '20px';
+            container.style.gap = '30px'
+            container.style.backgroundColor = 'darkblue';
 
             form.appendChild(input);
             form.appendChild(button);
@@ -65,23 +85,76 @@ class AsignarActivos extends HTMLElement {
 
             const divItem2 = document.createElement('div');
                 divItem2.innerHTML = `
+
+                <style>
+
+                .scroll {
+                    display: flex;
+                    width: 40vw;
+                    overflow-y: auto; 
+                }
+
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+               
+
+                .container {
+                    gap: 30px;
+                    background: none;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px;
+                    width: 40vw;
+                    }
+
+                h3{
+                    color:white;
+                    font-size: 20px;
+                }
+
+                #fecha, #activoId, 
+                #comentario, #idResponsable{
+                    width: 100%;
+                    height: 3vh;
+                    font-size: 15px;
+                    margin: 20px 0px;
+                    border-radius: 5px;
+                    border: none;
+                }
+
+                #button{
+                    padding: 8px 16px;
+                    border: 1px solid #007bff;
+                    border-radius: 5px;
+                    background-color: #007bff;
+                    color: #fff;
+                }
+                </style>
+
                 <h3>Asignar activo<h3>
+
                 <form action="#">
+
                     <label for="fecha">Fecha:</label>
                     <input type="date" id="fecha" name="fecha" value="2024-03-05" required><br>
-                    <label for="activoId">Activo ID:</label>
+                    
+                    <label for="activoId" id="activoId">Activo ID:</label>
                     <select for="tipoPersonaId" class=" tipoPersonaId" id="activoId">
-                    <option value="" >Activo id</option>
+                    
+                        <option value="" >Activo id</option>
 
-   
                      </select>
+
                     <br>
                     <label for="comentario">Comentario:</label>
                     
+                   
                     <input type="text" id="comentario" name="comentario" value="" required><br>
-                    <select class=" tipoPersonaId" id="idResponsable">
+                    <select class="tipoPersonaId" id="idResponsable">
                         <option value="" > idResponsable </option>
                     </select>
+
                     <button id="button" type="button">Enviar</button>
                 </form>
                     
@@ -136,8 +209,42 @@ class AsignarActivos extends HTMLElement {
 
                 const divItem = document.createElement('div');
                 divItem.innerHTML = `
-                    <p>Nombre: ${item.nombre}</p>
-                    <p>ID: ${item.id}</p>
+
+                    <style>
+
+                    .scroll {
+                        display: flex;
+                        width: 40vw;
+                        overflow-y: auto; 
+                    }
+    
+                    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+                   
+    
+                    .container {
+                        gap: 30px;
+                        background: none;
+                        flex-direction: column;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
+                        width: 40vw;
+                        }
+    
+
+                        h2{
+                            font-size: 30px;
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            color: white;
+                        }
+
+                    </style>
+
+                    <h2>Nombre: ${item.nombre}</h2>
+                    <h2>ID: ${item.id}</h2>
                     
                 `;
 
@@ -148,7 +255,28 @@ class AsignarActivos extends HTMLElement {
                 if (info.length > 0) {
                     const divItem2 = document.createElement('div');
                     divItem2.innerHTML = `
-                        <h3>Activos asignados<h3>
+
+
+                    <style>
+
+                        h2{
+                            font-size: 30px;
+                            display: flex;
+                            justify-content: center;
+                            color: white;
+                        }
+
+
+                        h4{
+                            font-size: 20px;
+                            display: flex;
+                            justify-content: center;
+                            color: white;
+                        }
+                    </style>
+
+
+                        <h2>Activos asignados<h2>
                         ${info.map(infoItem => `
                             <h4>fecha: ${infoItem.fecha}</h4>
                             <h4>activoId: ${infoItem.activoId}</h4>
@@ -168,16 +296,24 @@ class AsignarActivos extends HTMLElement {
             let searchData = await data.find(item => item.id === searchValue);
 
             container.innerHTML = `
-                <form id="searchForm" action="">
-                    <input type="text" id="searchInput" name="searchInput" placeholder="Escribe tu búsqueda">
-                    <button type="submit">Buscar</button>
-                </form>
             `;
 
             let html = `
-                <p>Nombre: ${searchData.nombre}</p>
-                <p>ID: ${searchData.id}</p>
-                
+
+                <style>
+
+                    h2{
+                        font-size: 30px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        color: white;
+                    }
+
+                </style>
+
+                <h2>Nombre: ${searchData.nombre}</h2>
+                <h2>ID: ${searchData.id}</h2>
             `;
             container.innerHTML += html;
 
@@ -188,11 +324,31 @@ class AsignarActivos extends HTMLElement {
             if (info.length > 0) {
                 const divItem2 = document.createElement('div');
                 divItem2.innerHTML = `
-                    <h3>Activos asignados<h3>
-                    ${info.map(infoItem => `
-                        <h4>fecha: ${infoItem.fecha}</h4>
-                        <h4>activoId: ${infoItem.activoId}</h4>
-                        <h4>comentario: ${infoItem.comentario}</h4>
+
+                <style>
+
+                h2{
+                    font-size: 30px;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                }
+
+
+                h4{
+                    font-size: 20px;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                }
+            </style>
+
+
+                <h2>Activos asignados<h2>
+                ${info.map(infoItem => `
+                    <h4>fecha: ${infoItem.fecha}</h4>
+                    <h4>activoId: ${infoItem.activoId}</h4>
+                    <h4>comentario: ${infoItem.comentario}</h4>
                     `).join('')}
                 `;
                 container.appendChild(divItem2);

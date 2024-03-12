@@ -1,75 +1,12 @@
 {
-  "activos": [
-    {
-      "id": "1",
-      "CodTransaccion": "ggggggg",
-      "NroFormulario": "asd",
-      "marcaId": "1",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": "ds",
-      "proveedorId": "1",
-      "nroSerial": "dsf",
-      "empresaResponsableId": "undefined",
-      "estadoId": "2"
-    },
-    {
-      "id": "2",
-      "CodTransaccion": "sdfds",
-      "NroFormulario": "df",
-      "marcaId": "2",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": "dsf",
-      "proveedorId": "1",
-      "nroSerial": "dsf",
-      "empresaResponsableId": "dfsf",
-      "estadoId": "2"
-    },
-    {
-      "id": "eeeeeee",
-      "CodTransaccion": "ffff",
-      "NroFormulario": "ffff",
-      "marcaId": "2",
-      "categoriaActivoId": "1",
-      "tipoId": "1",
-      "valorUnitario": "ffff",
-      "proveedorId": "1",
-      "nroSerial": "fff",
-      "empresaResponsableId": "ff",
-      "estadoId": "2"
-    }
-  ],
-  "historialActivos": [
-    {
-      "id": "1",
-      "activoId": "1",
-      "fecha": "2024-03-05",
-      "responsableId": "1",
-      "estadoId": "2"
-    }
-  ],
+  "activos": [],
+  "historialActivos": [],
   "detalleMovimiento": [
     {
-      "id": "1",
       "fecha": "2024-03-05",
-      "activoId": "1",
-      "comentario": "random",
-      "asignacionId": "2"
-    },
-    {
-      "id": "2",
-      "fecha": "2024-03-05",
-      "activoId": "1",
-      "comentario": "hola",
-      "asignacionId": "1"
-    },
-    {
-      "fecha": "2024-03-05",
-      "activoId": "1",
-      "comentario": "lo que sea",
-      "asignacionId": "2",
-      "id": "Rps4FOv"
+      "comentario": "",
+      "asignacionId": "",
+      "id": "pPN4J85"
     }
   ],
   "proveedores": [
@@ -81,18 +18,18 @@
   ],
   "marcas": [
     {
-      "nombre": "lenovo",
-      "id": 1
-    },
-    {
       "nombre": "hhhh",
       "id": 2
+    },
+    {
+      "nombre": "aaaaaaaaa",
+      "id": 3
     }
   ],
   "estados": [
     {
-      "id": "2",
-      "nombre": "En uso"
+      "nombre": "loco",
+      "id": "fkXgl1v"
     }
   ],
   "asignaciones": [
