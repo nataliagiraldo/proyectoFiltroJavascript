@@ -310,7 +310,7 @@ const runFiltered = async (endPoint, estadoId) => {
 }
 
 // runFiltered(detalles, itemId) toma el endpoint y verifica que el id de asignacion sea igual que el item id Falta exportar hacer select
-let link = 'http://localhost:3000/detalleMovimiento'
+// let link = 'http://localhost:3000/detalleMovimiento'
 
 
 

@@ -14,10 +14,11 @@ class eliminarActivos extends HTMLElement {
 
         let url = `http://localhost:3000/activos`;
         let data = await runFilteredAsync(url, "1");
+        
         let container = this;
 
         const renderData = (items) => {
-
+           
             container.innerHTML = '';
 
             const form = document.createElement('form');
@@ -61,7 +62,7 @@ class eliminarActivos extends HTMLElement {
             container.appendChild(form);
 
             items.forEach(item => {
-                if ('nombre' in item) {
+                
                     const divItem = document.createElement('div');
                     divItem.innerHTML = /*html*/ `
 
@@ -142,7 +143,7 @@ class eliminarActivos extends HTMLElement {
                         let id = item.id
                         deleteInfoAsync(url, id)
                     });
-                };
+                
 
             });
         };

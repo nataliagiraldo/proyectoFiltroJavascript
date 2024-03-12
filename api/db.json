@@ -1,5 +1,19 @@
 {
-  "activos": [],
+  "activos": [
+    {
+      "id": "ee",
+      "CodTransaccion": "wqeqe",
+      "NroFormulario": "weqe",
+      "marcaId": "2",
+      "categoriaActivoId": "1",
+      "tipoId": "1",
+      "valorUnitario": "400",
+      "proveedorId": "1",
+      "nroSerial": "12",
+      "empresaResponsableId": "12",
+      "estadoId": "1"
+    }
+  ],
   "historialActivos": [],
   "detalleMovimiento": [
     {
@@ -28,8 +42,8 @@
   ],
   "estados": [
     {
-      "nombre": "loco",
-      "id": "fkXgl1v"
+      "nombre": "Dado de baja",
+      "id": "1"
     }
   ],
   "asignaciones": [
